@@ -1,0 +1,14 @@
+{
+  "source_path": "attack_phase/config/server_probe_manifest.json",
+  "source_sha256": "e777eab145d6801853aedaa1baa2fb0fd46251cf11d27801ddf837d34714e306",
+  "export_path": "attack_phase/config/server_probe_manifest.json",
+  "export_sha256": "575fe9b91156f83ed4677cef85dc543748cd255b118a268910ddb07afafee3cc",
+  "transformation": "Retain only five actually submitted probes; preserve targets, source paths and routing for those probes.",
+  "retained_probes": [
+    "S0_baseline",
+    "S1_dual_stage4_donor",
+    "S3_orthogonal_probe",
+    "S4_skip1_aia_multiplex",
+    "S5_adaptive_split_aia_multiplex"
+  ]
+}

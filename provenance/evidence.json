@@ -1,0 +1,115 @@
+{
+  "source_revision": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+  "note": "Evidence originals remain in the private competition archive. Only paths, hashes and curated non-row-level summaries are exported. Not all historical submissions have a frozen code hash.",
+  "sources": [
+    {
+      "path": "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+      "sha256": "cf74655c42fd41e3004892de44d26355a1b37e9d33b9292f58220658d57e4a3a"
+    },
+    {
+      "path": "analysis/prelim_review_20260924/REPORT.md",
+      "sha256": "5571d1ca77aceae5d7b017be81d7a548c611851edf3a65599ae864fea126a6bb"
+    },
+    {
+      "path": "analysis/prelim_review_20260924/outputs/submission_ledger.csv",
+      "sha256": "a3f4d2ed631f9ea3bcc1783bbbf343c50ce037c97e26d971a728014da6133177"
+    },
+    {
+      "path": "attack_phase/docs/SERVER_EVAL_LOG_20260906.md",
+      "sha256": "5c326dcf753ff7bb532857046c8f1466152122e398fe5295dcdf8c992effab71"
+    },
+    {
+      "path": "attack_phase/config/server_probe_manifest.json",
+      "sha256": "e777eab145d6801853aedaa1baa2fb0fd46251cf11d27801ddf837d34714e306"
+    },
+    {
+      "path": "research/G22_RESULT_20260925.md",
+      "sha256": "ba93b5e0b4448a639a420bbc1025db7af590fbab35b0eecf8427c8afaeea86a7"
+    },
+    {
+      "path": "research/submissions/20260924-G18-001.json",
+      "sha256": "e59c779b7c6da4117f2a7519c237518f5dfe3e706dabbb83db4305be1e2df402"
+    },
+    {
+      "path": "research/submissions/974967/REPORT.md",
+      "sha256": "2598b39b4d24747520315ca6379ef78e56f9cfb4950db770c6594b1886beeefd"
+    },
+    {
+      "path": "research/submissions/974967/finished/summary.json",
+      "sha256": "0430c4614f7ef25476d78c658621f14d8083057182f23404b399ccdf8fc5aadc"
+    },
+    {
+      "path": "research/submissions/975433/finished/summary.json",
+      "sha256": "b39acdabb63adfe4e7dc336eb639efb5e736e6847e9b0bb525e935cb2831dcc6"
+    },
+    {
+      "path": "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md",
+      "sha256": "603cc730ec2e360366b3d29fb6782c5a2e79b6dcff509cd3fe952d314792c785"
+    },
+    {
+      "path": "research/runs/20260925-G22-001/jitter_w1_s3401_manifest.json",
+      "sha256": "5ed4193d0f15c8656aae633ec4ed578943a8291a1c5778465a394355ff25ba80"
+    },
+    {
+      "path": "research/runs/20261011-FA114-rare-fixed-main-001/builder_hashes.json",
+      "sha256": "9ebbb668be60646a9462fd197c42af1f0d1b1725f8ed5e2b90a5a15971fb0eb6"
+    },
+    {
+      "path": "research/runs/20261010-FA106-cl06-main-transfer-001/code_hashes.json",
+      "sha256": "5cc1512d8fae5310e7e0ef2e9ef0e1ed67d2a137731457d24f2188e20e4789f3"
+    },
+    {
+      "path": "research/runs/20261011-FA108-measured-final-integration-001/RESULT.md",
+      "sha256": "eab14e6172c353e646060733a407e12aef8f72436b8f36a83c4036aa95831805"
+    },
+    {
+      "path": "research/submissions/972302/receipt.json",
+      "sha256": "b47986258cc34eb93e0ea3a2f1adbc598c7382197beca35ab56e6388739408d9"
+    },
+    {
+      "path": "research/runs/20261010-FA103-exploration-A-package-001/plan.json",
+      "sha256": "3f93326d35566b33a1ef2c56ec4506a30e38e9511d410bfab4aee02314dbf49a"
+    },
+    {
+      "path": "research/runs/20261010-FA107-exploration-B-package-001/plan.json",
+      "sha256": "d3772e43d6a2e579e1c0f6778c74501b336c48a5643506f0b5d992485c29d1bb"
+    }
+  ],
+  "historical_code_hash_checks": [
+    {
+      "stage": "G22",
+      "path": "research/utility_slack.py",
+      "recorded_sha256": "1aa199f480d37713aede3a20e7688f1754c91077b666911ac2add4e12c8c787e",
+      "source_sha256": "1aa199f480d37713aede3a20e7688f1754c91077b666911ac2add4e12c8c787e",
+      "matches_recorded": true
+    },
+    {
+      "stage": "FA114",
+      "path": "research/build_rare_fixed_main.py",
+      "recorded_sha256": "154365e4ff5909d4ca4e83bdb6f8b246a3b9e45c9626b21ee47de864991115f5",
+      "source_sha256": "154365e4ff5909d4ca4e83bdb6f8b246a3b9e45c9626b21ee47de864991115f5",
+      "matches_recorded": true
+    },
+    {
+      "stage": "FA114",
+      "path": "research/rare_fixed_calibration.py",
+      "recorded_sha256": "978e34c7033e929a2fa9693b011c244954c3bec904c7a34734774e82393f4877",
+      "source_sha256": "978e34c7033e929a2fa9693b011c244954c3bec904c7a34734774e82393f4877",
+      "matches_recorded": true
+    },
+    {
+      "stage": "FA114",
+      "path": "research/verify_rare_fixed_calibration.py",
+      "recorded_sha256": "0402ec36cb60c6da60774dbc768ad7396d77dbf5d147744b0c237007d49514a2",
+      "source_sha256": "0402ec36cb60c6da60774dbc768ad7396d77dbf5d147744b0c237007d49514a2",
+      "matches_recorded": true
+    },
+    {
+      "stage": "FA106",
+      "path": "research/runs/20261010-FA106-cl06-main-transfer-001/run_main_transfer.py",
+      "recorded_sha256": "7b74fe71e7df852544d06c6e4bca3482bb46dab622236a10a77ecc36d55103b1",
+      "source_sha256": "7b74fe71e7df852544d06c6e4bca3482bb46dab622236a10a77ecc36d55103b1",
+      "matches_recorded": true
+    }
+  ]
+}

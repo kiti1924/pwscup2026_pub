@@ -1,0 +1,21 @@
+{
+  "audited_on": "2026-10-27",
+  "scope": "All non-cache workspace files and every reachable Git blob at this checkpoint. No source history imported.",
+  "workspace_files_scanned": 125,
+  "reachable_history_blobs_scanned": 105,
+  "known_competition_token_scan": "PASS; values not logged",
+  "credential_and_user_absolute_path_scan": "PASS",
+  "competition_data_and_binary_file_scan": "PASS",
+  "findings": [],
+  "archived_code_files": 97,
+  "unit_tests_passed": 7,
+  "private_replay": {
+    "G22_CSV_bytes_exact": true,
+    "FA114_MIA_cells": 23078,
+    "FA114_MIA_cells_different": 0,
+    "FA114_priority_max_abs_difference": 4.440892098500626e-16,
+    "final_AIA_rows": 7172,
+    "final_AIA_CSV_bytes_exact": true,
+    "private_inputs_copied": false
+  }
+}

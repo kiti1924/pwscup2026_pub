@@ -1,0 +1,221 @@
+{
+  "targets": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    17,
+    18,
+    19,
+    20,
+    22,
+    23,
+    24,
+    26,
+    29
+  ],
+  "probes": {
+    "S0_baseline": {
+      "hypothesis": "Server anchor for the validated rollback pair.",
+      "comparison_probe": null,
+      "sources": {
+        "mia": {
+          "frozen_stage2_nn": "attack_phase/outputs/20260828_mia_stage2_final/F_mia_candidate.csv"
+        },
+        "aia": {
+          "official_1nn": "attack_phase/outputs/20260828_aia_stage2_final_v4/F_aia_baseline.csv"
+        }
+      },
+      "routing": {
+        "mia": {
+          "default": "frozen_stage2_nn"
+        },
+        "aia": {
+          "default": "official_1nn"
+        }
+      }
+    },
+    "S1_dual_stage4_donor": {
+      "hypothesis": "Fixed Stage-4 ExtraTrees blend may complement frozen MIA on weak server targets; donor-modal AIA is held as the historical challenger.",
+      "comparison_probe": "S0_baseline",
+      "sources": {
+        "mia": {
+          "blend_nn_extratrees_25": "attack_phase/outputs/20260906_mia_stage4_reuse_for_s1_dual/F_mia_blend_nn_extratrees_25.csv"
+        },
+        "aia": {
+          "gated_abstain_donor_modal": "attack_phase/outputs/20260828_aia_stage2_final_v4/F_aia_challenger.csv"
+        }
+      },
+      "routing": {
+        "mia": {
+          "default": "blend_nn_extratrees_25"
+        },
+        "aia": {
+          "default": "gated_abstain_donor_modal"
+        }
+      }
+    },
+    "S3_orthogonal_probe": {
+      "hypothesis": "A fixed rare-conditioned density-ratio MIA expert on weak targets and corrected H4 cell-modal AIA reveal orthogonal target suitability.",
+      "comparison_probe": "S0_baseline",
+      "sources": {
+        "mia": {
+          "rare_kde_weak_targets": "attack_phase/outputs/20260906_mia_stage7_for_s3/F_mia_rare_kde_weak_targets.csv"
+        },
+        "aia": {
+          "cell_modal_aggregate": "attack_phase/outputs/20260906_aia_stage7_for_s3/F_aia_cell_modal_aggregate.csv"
+        }
+      },
+      "routing": {
+        "mia": {
+          "default": "rare_kde_weak_targets"
+        },
+        "aia": {
+          "default": "cell_modal_aggregate"
+        }
+      }
+    },
+    "S4_skip1_aia_multiplex": {
+      "run_name": "20260907_server_S4_skip1_mux",
+      "submission_filename": "PWSCup2026_attack_team10_20260907_server_S4_skip1_mux.zip",
+      "hypothesis": "S4 exploratory localization/multiplex probe. The preregistered skip1 MIA family failed its local gate, so the packaged MIA uses the preregistered S3 rare-KDE masking fallback on targets 4,6,8,10,12,17,19,22,24 and frozen S0 MIA on targets 1,2,3,5,7,9,13,18,20,23,26,29. AIA fills one valid not-yet-server-tested target-expert cell for every target using fixed seed 20260907.",
+      "comparison_probe": "S0_baseline",
+      "sources": {
+        "mia": {
+          "skip1_selected": "attack_phase/outputs/20260907_s4_skip1_multiplex_inputs_v10/F_mia_skip1_selected.csv"
+        },
+        "aia": {
+          "aia_multiplex": "attack_phase/outputs/20260907_s4_skip1_multiplex_inputs_v10/F_aia_multiplex.csv"
+        }
+      },
+      "routing": {
+        "mia": {
+          "default": "skip1_selected"
+        },
+        "aia": {
+          "default": "aia_multiplex"
+        }
+      },
+      "effective_mia": {
+        "selection": "skip1 local gate failed; fallback group ablation",
+        "frozen_targets": [
+          1,
+          2,
+          3,
+          5,
+          7,
+          9,
+          13,
+          18,
+          20,
+          23,
+          26,
+          29
+        ],
+        "rare_kde_targets": [
+          4,
+          6,
+          8,
+          10,
+          12,
+          17,
+          19,
+          22,
+          24
+        ]
+      },
+      "aia_assignment_seed": 20260907,
+      "metadata": "attack_phase/outputs/20260907_s4_skip1_multiplex_inputs_v10/run.json",
+      "assignment": "attack_phase/outputs/20260907_s4_skip1_multiplex_inputs_v10/aia_assignment.json"
+    },
+    "S5_adaptive_split_aia_multiplex": {
+      "run_name": "20260907_server_S5_adaptive_mux_v3",
+      "submission_filename": "PWSCup2026_attack_team10_20260907_server_S5_adaptive_mux_v3.zip",
+      "hypothesis": "Restore frozen MIA on U6 while retaining rare-KDE only on Z3={4,19,24}; propagate S4 modal/window evidence through a fixed new-cell AIA multiplex.",
+      "comparison_probe": "S0_baseline",
+      "sources": {
+        "mia": {
+          "frozen_stage2_nn": "attack_phase/outputs/20260828_mia_stage2_final/F_mia_candidate.csv",
+          "rare_kde_s3": "attack_phase/outputs/20260906_mia_stage7_for_s3/F_mia_rare_kde_weak_targets.csv"
+        },
+        "aia": {
+          "aia_s5_multiplex": "attack_phase/outputs/20260907_server_S5_adaptive_mux_v3/F_aia.csv"
+        }
+      },
+      "routing": {
+        "mia": {
+          "default": "frozen_stage2_nn",
+          "target_overrides": {
+            "4": "rare_kde_s3",
+            "19": "rare_kde_s3",
+            "24": "rare_kde_s3"
+          }
+        },
+        "aia": {
+          "default": "aia_s5_multiplex"
+        }
+      },
+      "effective_mia": {
+        "frozen_targets": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          17,
+          18,
+          20,
+          22,
+          23,
+          26,
+          29
+        ],
+        "rare_kde_targets": [
+          4,
+          19,
+          24
+        ]
+      },
+      "aia_assignment_seed": 20260907,
+      "assignment": {
+        "1": "weighted_modal_k25",
+        "2": "weighted_modal_window",
+        "3": "weighted_modal_window",
+        "4": "weighted_modal_window",
+        "5": "weighted_modal_window",
+        "6": "membership_gated",
+        "7": "weighted_modal_k25",
+        "8": "weighted_modal_k25",
+        "9": "weighted_modal_window",
+        "10": "weighted_modal_window",
+        "12": "weighted_modal_k25",
+        "13": "weighted_modal_k25",
+        "17": "stage3_huber_huber",
+        "18": "stage3_huber_huber",
+        "19": "membership_gated",
+        "20": "weighted_modal_window",
+        "22": "weighted_modal_k25",
+        "23": "weighted_modal_k25",
+        "24": "group_mean_corrected_donor",
+        "26": "any_event_cox_window_mode",
+        "29": "weighted_knn"
+      },
+      "tested_cell_registry_asserted_new": true,
+      "metadata": "attack_phase/outputs/20260907_server_S5_adaptive_mux_v3/run.json"
+    }
+  }
+}

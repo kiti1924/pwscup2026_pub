@@ -1,0 +1,702 @@
+{
+  "note": "Retrospective extraction. Precision and gaps are explicit. No raw answer vectors or tokens.",
+  "final_results": {
+    "prelim_processing_U": 0.9783603432,
+    "prelim_overall_score": 0.6791891346,
+    "prelim_overall_rank": 10,
+    "prelim_attack_score": 0.2429347629,
+    "prelim_attack_rank": 13,
+    "final_processing_U": 0.9295762066619602,
+    "final_processing_U_rank": 11,
+    "final_processing_Anon": null,
+    "final_attack_score": 0.16844502534165828,
+    "final_attack_rank": 21
+  },
+  "submissions": [
+    {
+      "phase": "prelim_processing",
+      "submission_id": 896537,
+      "label": "中間",
+      "method": "公式copula seed0",
+      "code": [],
+      "score": 0.4867,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+        "analysis/prelim_review_20260924/REPORT.md",
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv"
+      ],
+      "note": "公式キットのcopula_survival。独自コードではない。"
+    },
+    {
+      "phase": "prelim_processing",
+      "submission_id": 896550,
+      "label": "中間",
+      "method": "公式copula seed4",
+      "code": [],
+      "score": 0.6285,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+        "analysis/prelim_review_20260924/REPORT.md",
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv"
+      ],
+      "note": "公式キットのseed探索。独自コードではない。"
+    },
+    {
+      "phase": "prelim_processing",
+      "submission_id": 896581,
+      "label": "中間",
+      "method": "初期改善候補（生成系列未確定）",
+      "code": [],
+      "score": 0.9083,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+        "analysis/prelim_review_20260924/REPORT.md",
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv"
+      ],
+      "note": "提出の存在と表示値は確認。生成コードの一意な結合証拠が不足。"
+    },
+    {
+      "phase": "prelim_processing",
+      "submission_id": 896595,
+      "label": "中間",
+      "method": "希少群対応合成 covariate seed4/outcome seed56",
+      "code": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_outcome_sweep.py"
+      ],
+      "score": 0.9194,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+        "analysis/prelim_review_20260924/REPORT.md",
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv"
+      ],
+      "note": "当時の総合レポートとの値の対応による事後整理。"
+    },
+    {
+      "phase": "prelim_processing",
+      "submission_id": 896618,
+      "label": "中間",
+      "method": "tilt後の転帰再較正",
+      "code": [
+        "experiments/run_rare_truth_tilt.py",
+        "experiments/run_calibrated_outcomes.py"
+      ],
+      "score": 0.971,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+        "analysis/prelim_review_20260924/REPORT.md",
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv"
+      ],
+      "note": "表示.9710、レポートのU=.970964段階との対応による事後整理。"
+    },
+    {
+      "phase": "prelim_processing",
+      "submission_id": 896713,
+      "label": "最終",
+      "method": "静的微修正までの最終加工系列",
+      "code": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_calibrated_outcomes.py",
+        "experiments/run_outcome_swap_hillclimb.py",
+        "experiments/run_static_swap_probe.py"
+      ],
+      "score": 0.9784,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": true,
+      "evidence": [
+        "docs/PWSCUP2026_prelim_processing_comprehensive_report.md",
+        "analysis/prelim_review_20260924/REPORT.md",
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv"
+      ],
+      "note": "全系列はPRELIM_PROCESSING.md。Git前のため完全な凍結パイプラインではない。"
+    },
+    {
+      "phase": "prelim_attack",
+      "submission_id": 916932,
+      "label": "S0",
+      "method": "frozen_stage2_nn + official_1nn",
+      "code": [
+        "attack_phase/scripts/run_mia_stage2_experiment.py",
+        "attack_phase/scripts/run_aia_stage2_experiment.py",
+        "attack_phase/scripts/build_server_probe.py"
+      ],
+      "score": 0.2314,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": true,
+      "evidence": [
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv",
+        "attack_phase/docs/SERVER_EVAL_LOG_20260906.md",
+        "attack_phase/config/server_probe_manifest.json"
+      ],
+      "note": "最終自己除外20標的でS0=0.2429347629。表示時は自己込み21標的。"
+    },
+    {
+      "phase": "prelim_attack",
+      "submission_id": 916951,
+      "label": "S1-dual",
+      "method": "NN75%/ExtraTrees25% + gated donor modal",
+      "code": [
+        "attack_phase/scripts/run_mia_stage4_experiment.py",
+        "attack_phase/scripts/build_server_probe.py"
+      ],
+      "score": 0.1909,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv",
+        "attack_phase/docs/SERVER_EVAL_LOG_20260906.md",
+        "attack_phase/config/server_probe_manifest.json"
+      ],
+      "note": "最終自己除外20標的でS0=0.2429347629。表示時は自己込み21標的。"
+    },
+    {
+      "phase": "prelim_attack",
+      "submission_id": 916998,
+      "label": "S3",
+      "method": "frozen1/2 + rare-KDE other19 / cell-modal",
+      "code": [
+        "attack_phase/scripts/make_s3_mia_candidate.py",
+        "attack_phase/scripts/build_s3_orthogonal_inputs.py"
+      ],
+      "score": 0.1762,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv",
+        "attack_phase/docs/SERVER_EVAL_LOG_20260906.md",
+        "attack_phase/config/server_probe_manifest.json"
+      ],
+      "note": "最終自己除外20標的でS0=0.2429347629。表示時は自己込み21標的。"
+    },
+    {
+      "phase": "prelim_attack",
+      "submission_id": 917054,
+      "label": "S4",
+      "method": "frozen12 + KDE9 / AIA multiplex",
+      "code": [
+        "attack_phase/scripts/build_s4_exploratory_probe.py"
+      ],
+      "score": 0.198,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv",
+        "attack_phase/docs/SERVER_EVAL_LOG_20260906.md",
+        "attack_phase/config/server_probe_manifest.json"
+      ],
+      "note": "最終自己除外20標的でS0=0.2429347629。表示時は自己込み21標的。"
+    },
+    {
+      "phase": "prelim_attack",
+      "submission_id": 917072,
+      "label": "S5",
+      "method": "KDE4/19/24 + frozen18 / AIA multiplex",
+      "code": [
+        "attack_phase/scripts/build_s5_server_probe.py"
+      ],
+      "score": 0.1594,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "analysis/prelim_review_20260924/outputs/submission_ledger.csv",
+        "attack_phase/docs/SERVER_EVAL_LOG_20260906.md",
+        "attack_phase/config/server_probe_manifest.json"
+      ],
+      "note": "最終自己除外20標的でS0=0.2429347629。表示時は自己込み21標的。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942802,
+      "label": "G02",
+      "method": "G02の加工候補",
+      "code": [
+        "research/run_processing.py"
+      ],
+      "score": 0.676311999928737,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/942802/result.json"
+      ],
+      "note": "最終Anonとは別の有用性U。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 943366,
+      "label": "G20",
+      "method": "G20の加工候補",
+      "code": [
+        "research/geographic_intervention.py"
+      ],
+      "score": 0.913475661058522,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/943366/result.json"
+      ],
+      "note": "最終Anonとは別の有用性U。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 943396,
+      "label": "G21-001",
+      "method": "G21-001の加工候補",
+      "code": [
+        "research/overnight_refinement.py"
+      ],
+      "score": 0.9170339094867396,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/943396/result.json"
+      ],
+      "note": "最終Anonとは別の有用性U。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 943413,
+      "label": "G21-002",
+      "method": "G21-002の加工候補",
+      "code": [
+        "research/compose_group_outcomes.py"
+      ],
+      "score": 0.9295762066619602,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/943413/result.json"
+      ],
+      "note": "最終Anonとは別の有用性U。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 943786,
+      "label": "G22",
+      "method": "G22の加工候補",
+      "code": [
+        "research/utility_slack.py"
+      ],
+      "score": 0.9295762066619602,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": true,
+      "evidence": [
+        "research/submissions/943786/result.json"
+      ],
+      "note": "最終Anonとは別の有用性U。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942969,
+      "label": "G18/dup_exact",
+      "method": "Exact duplicate control",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": 0.6838227693773287,
+      "score_precision": "exact",
+      "status": "finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942917,
+      "label": "G18/dup_exact 初回",
+      "method": "Exact duplicate control",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": null,
+      "score_precision": "exact",
+      "status": "Cancelled",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json"
+      ],
+      "note": "取消後に同じ候補を942969で再提出。採点済み候補の追加とは数えない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942918,
+      "label": "G18/dup_epsilon",
+      "method": "Sub-resolution jitter, exact duplicate metric contrast",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": 0.6838227693772546,
+      "score_precision": "exact",
+      "status": "finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942974,
+      "label": "G18/mass73",
+      "method": "Mass deadzone inner control, other rare facets may bind",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": 0.6614836278854597,
+      "score_precision": "exact",
+      "status": "finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942922,
+      "label": "G18/mass73 初回",
+      "method": "Mass deadzone inner control, other rare facets may bind",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": null,
+      "score_precision": "exact",
+      "status": "Cancelled",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json"
+      ],
+      "note": "取消後に同じ候補を942974で再提出。採点済み候補の追加とは数えない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942980,
+      "label": "G18/mass100",
+      "method": "Mass outer control with mass binding U_rare",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": null,
+      "score_precision": "exact",
+      "status": "Finished_observed_details_not_recovered",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。9/25 G22終了記録でFinished化を観測。精密結果は未回収。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942930,
+      "label": "G18/mass100 初回",
+      "method": "Mass outer control with mass binding U_rare",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": null,
+      "score_precision": "exact",
+      "status": "Cancelled",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json"
+      ],
+      "note": "取消後に同じ候補を942980で再提出。採点済み候補の追加とは数えない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942931,
+      "label": "G18/censor_outside",
+      "method": "Censoring zero while U_valid mean stays above overall bottleneck",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": 0.6763119999287368,
+      "score_precision": "exact",
+      "status": "finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942932,
+      "label": "G18/c2st_low",
+      "method": "Unsaturated C2ST diagnostic control from saved search",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": 0.8552530527609246,
+      "score_precision": "exact",
+      "status": "finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942981,
+      "label": "G18/c2st_selected",
+      "method": "Selected C2ST candidate; posthoc comparison, no internal seed proof",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": null,
+      "score_precision": "exact",
+      "status": "Finished_observed_details_not_recovered",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。9/25 G22終了記録でFinished化を観測。精密結果は未回収。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942934,
+      "label": "G18/c2st_selected 初回",
+      "method": "Selected C2ST candidate; posthoc comparison, no internal seed proof",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": null,
+      "score_precision": "exact",
+      "status": "Cancelled",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json"
+      ],
+      "note": "取消後に同じ候補を942981で再提出。採点済み候補の追加とは数えない。"
+    },
+    {
+      "phase": "final_processing",
+      "submission_id": 942936,
+      "label": "G18/cox_calibrated",
+      "method": "Cox calibration with unchanged static features",
+      "code": [
+        "research/probe_metric_rules.py"
+      ],
+      "score": 0.844579997458381,
+      "score_precision": "exact",
+      "status": "finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/20260924-G18-001.json",
+        "research/G22_RESULT_20260925.md"
+      ],
+      "note": "G18診断候補。最終C系列には使っていない。"
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 965017,
+      "label": "FA04-S1",
+      "method": "full_static_nn + official_1nn",
+      "code": [
+        "research/build_final_attack_baseline.py",
+        "research/final_attack_api.py"
+      ],
+      "score": 0.11387663192480765,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 971407,
+      "label": "FA15",
+      "method": "peer_bg_excluded (target9 full_static) + raw_soft_pref1",
+      "code": [
+        "research/prepare_mechanism_comparison.py",
+        "research/final_attack_extensions.py",
+        "research/mechanism_components.py",
+        "research/prefecture_weight_attacks.py"
+      ],
+      "score": 0.14063939263705794,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 972302,
+      "label": "CL01-S3",
+      "method": "structural MIA + 30% AIA abstention",
+      "code": [
+        "research/claude/structural_attack.py",
+        "research/claude/build_candidates.py"
+      ],
+      "score": 0.1203,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 974256,
+      "label": "FA95",
+      "method": "972302 MIA + FA55 public API AIA",
+      "code": [
+        "research/fa55_public_api.py",
+        "research/run_fa55_public_api.py"
+      ],
+      "score": 0.0984,
+      "score_precision": "display_4dp",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 974917,
+      "label": "FA103/A",
+      "method": "FA100 age10 AIA + FA98 rare-slot MIA",
+      "code": [
+        "research/run_main_public_contrasts.py",
+        "research/main_attack_contrasts.py",
+        "research/mia_rare_slots.py",
+        "research/package_public_attack.py"
+      ],
+      "score": 0.07599031099305086,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 974934,
+      "label": "FA107/B",
+      "method": "ungated rank2 AIA + FA106 calibration MIA",
+      "code": [
+        "research/run_main_public_contrasts.py",
+        "research/nearest_decoy.py",
+        "research/conditional_null_mia.py",
+        "research/runs/20261010-FA106-cl06-main-transfer-001/run_main_transfer.py",
+        "research/package_public_attack.py"
+      ],
+      "score": 0.07142328071061418,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 974967,
+      "label": "FA108",
+      "method": "six-source measured AIA integration + 972302 MIA",
+      "code": [
+        "research/runs/20261011-FA108-measured-final-integration-001/build_final.py",
+        "research/package_public_attack.py"
+      ],
+      "score": 0.16158151847815144,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": false,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    },
+    {
+      "phase": "final_attack",
+      "submission_id": 975433,
+      "label": "FA114",
+      "method": "974967 AIA + rare/excluded-protected nonrare calibration",
+      "code": [
+        "research/build_rare_fixed_main.py",
+        "research/rare_fixed_calibration.py",
+        "research/conditional_null_mia.py"
+      ],
+      "score": 0.16844502534165828,
+      "score_precision": "exact",
+      "status": "Finished",
+      "final_selected": true,
+      "evidence": [
+        "research/submissions/974967/REPORT.md",
+        "research/submissions/974967/finished/summary.json",
+        "research/submissions/975433/finished/summary.json",
+        "docs/presentation/PWSCUP2026_PRESENTATION_SUMMARY.md"
+      ],
+      "note": ""
+    }
+  ]
+}

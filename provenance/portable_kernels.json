@@ -1,0 +1,26 @@
+[
+  {
+    "function": "transform",
+    "source_path": "research/utility_slack.py",
+    "source_start_line": 23,
+    "source_end_line": 34,
+    "source_file_sha256": "1aa199f480d37713aede3a20e7688f1754c91077b666911ac2add4e12c8c787e",
+    "body_changed": false
+  },
+  {
+    "function": "priority",
+    "source_path": "research/rare_fixed_calibration.py",
+    "source_start_line": 6,
+    "source_end_line": 11,
+    "source_file_sha256": "978e34c7033e929a2fa9693b011c244954c3bec904c7a34734774e82393f4877",
+    "body_changed": false
+  },
+  {
+    "function": "reassign",
+    "source_path": "research/rare_fixed_calibration.py",
+    "source_start_line": 14,
+    "source_end_line": 40,
+    "source_file_sha256": "978e34c7033e929a2fa9693b011c244954c3bec904c7a34734774e82393f4877",
+    "body_changed": false
+  }
+]
