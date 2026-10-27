@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+_private_team*/
+inputs/
+outputs/
+research/runs/**/candidate/
+*.csv
+*.npz
+*.npy
+*.zip
+**/token.txt
+.env

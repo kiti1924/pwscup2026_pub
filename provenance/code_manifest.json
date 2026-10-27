@@ -1,0 +1,3594 @@
+{
+  "source_revision": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+  "export_date": "2026-10-27",
+  "scope": "Submitted pipelines and transitive local imports; not the full experiment archive.",
+  "history_imported": false,
+  "private_data_included": false,
+  "official_kit_included": false,
+  "phase_entrypoints": {
+    "prelim_processing": [
+      "experiments/run_aligned_synth.py",
+      "experiments/run_calibrated_outcomes.py",
+      "experiments/run_outcome_sweep.py",
+      "experiments/run_rare_truth_tilt.py",
+      "experiments/run_rare_tilt_micro_composite.py",
+      "experiments/run_outcome_coordinate_search.py",
+      "experiments/run_outcome_micro_refine.py",
+      "experiments/run_prefecture_rebalance.py",
+      "experiments/minimal_prefecture_sweep.py",
+      "experiments/run_common_quantile_micro.py",
+      "experiments/run_outcome_swap_hillclimb.py",
+      "experiments/prefecture_after_swap.py",
+      "experiments/prefecture_after_round2.py",
+      "experiments/extend_prefecture_on_candidate.py",
+      "experiments/run_minimal_ks_search.py",
+      "experiments/run_rare_ks_search.py",
+      "experiments/run_static_swap_probe.py"
+    ],
+    "prelim_attack": [
+      "attack_phase/scripts/run_mia_stage2_experiment.py",
+      "attack_phase/scripts/run_aia_stage2_experiment.py",
+      "attack_phase/scripts/run_mia_stage4_experiment.py",
+      "attack_phase/scripts/build_attack_candidates.py",
+      "attack_phase/scripts/build_server_probe.py",
+      "attack_phase/scripts/make_s3_mia_candidate.py",
+      "attack_phase/scripts/build_s3_orthogonal_inputs.py",
+      "attack_phase/scripts/build_s4_exploratory_probe.py",
+      "attack_phase/scripts/build_s5_server_probe.py"
+    ],
+    "final_processing": [
+      "research/run_processing.py",
+      "research/probe_metric_rules.py",
+      "research/background_copula.py",
+      "research/calibrated_copula.py",
+      "research/geographic_intervention.py",
+      "research/overnight_refinement.py",
+      "research/compose_group_outcomes.py",
+      "research/utility_slack.py",
+      "research/confirm_overnight.py",
+      "research/audit_utility_slack.py"
+    ],
+    "final_attack": [
+      "research/build_final_attack_baseline.py",
+      "research/compare_final_attacks.py",
+      "research/prepare_mechanism_comparison.py",
+      "research/mechanism_components.py",
+      "research/prefecture_weight_attacks.py",
+      "research/run_fa55_public_api.py",
+      "research/run_main_public_contrasts.py",
+      "research/build_rare_fixed_main.py",
+      "research/package_public_attack.py",
+      "research/conditional_null_mia.py",
+      "research/claude/build_candidates.py",
+      "research/runs/20261010-FA106-cl06-main-transfer-001/run_main_transfer.py",
+      "research/runs/20261011-FA108-measured-final-integration-001/build_final.py"
+    ]
+  },
+  "files": [
+    {
+      "path": "attack_phase/scripts/build_attack_candidates.py",
+      "source_path": "attack_phase/scripts/build_attack_candidates.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "5e9b68b00498275ad8743a4a9110a95c2ba07368",
+      "source_sha256": "3a3170bb50c4a02c9824c406b1a469710dd6943481f733ef5117ebeab58a1178",
+      "export_sha256": "3a3170bb50c4a02c9824c406b1a469710dd6943481f733ef5117ebeab58a1178",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "MIA/AIAを組み合わせ、明示されたtokenファイルからZIPを組み立て検証する。",
+      "functions": [
+        "sha256_file",
+        "_require_file",
+        "_require_dir",
+        "_repo_label",
+        "_copy_candidates",
+        "_validate_zip",
+        "_make_zip",
+        "build_one",
+        "build_candidates",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "hashlib",
+        "json",
+        "pathlib",
+        "shutil",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "zipfile"
+      ],
+      "original_docstring": "Freeze the selected MIA/AIA candidates into validator-ready attack packages.\n\nThe script intentionally reads ``token.txt`` only while constructing the ZIP.\nNeither the token nor a token digest is written to ``run.json`` or any tracked\nfile.  Candidate CSVs and ZIPs live under ignored directories."
+    },
+    {
+      "path": "attack_phase/scripts/build_s3_orthogonal_inputs.py",
+      "source_path": "attack_phase/scripts/build_s3_orthogonal_inputs.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "ca1cf87c2a0c7aa00f5b5c5952104b462b5de759",
+      "source_sha256": "de3dd13483e334010fe9275bffd515bf1a691c09cf7e4faac10b0f47a0e3099b",
+      "export_sha256": "de3dd13483e334010fe9275bffd515bf1a691c09cf7e4faac10b0f47a0e3099b",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "S3のcell-modal AIA回答を生成する。",
+      "functions": [
+        "main"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage7.py"
+      ],
+      "external_import_roots": [
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": null
+    },
+    {
+      "path": "attack_phase/scripts/build_s4_exploratory_probe.py",
+      "source_path": "attack_phase/scripts/build_s4_exploratory_probe.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "f4c169f24d0d9b59aa0a4c66ce03ee3711a449be",
+      "source_sha256": "aed8eb2cb36a8272ab3972580298b364f15c2a51f8904e07566d7bad0f19d6c0",
+      "export_sha256": "aed8eb2cb36a8272ab3972580298b364f15c2a51f8904e07566d7bad0f19d6c0",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "S4で標的ごとに異なるAIA expertを割り当てる。局所実験と提出設定を区別する。",
+      "functions": [
+        "_split",
+        "make_c_only_nearest_decoy",
+        "_mia_metrics",
+        "_run_mia_pool",
+        "_select_mia",
+        "_crowding_score",
+        "_crowding_sanity",
+        "make_aia_assignment",
+        "_aia_predict",
+        "_build_public_candidates",
+        "run",
+        "parse_args"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage3.py",
+        "attack_phase/src/aia_stage5.py",
+        "attack_phase/src/aia_stage6.py",
+        "attack_phase/src/mia_low_fpr.py",
+        "attack_phase/src/mia_stage2.py",
+        "attack_phase/src/mia_stage9_skip1.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "scipy",
+        "sys"
+      ],
+      "original_docstring": "Build the bounded S4 nearest-decoy MIA + multiplex AIA probe.\n\nThis script performs the local H1a/H1b sanity check, freezes one formula\nbefore public scoring, creates one deterministic AIA assignment, and writes\ncandidate CSVs for the target router.  It never reads the Team 10 token and\nnever creates a ZIP or submits to Codabench."
+    },
+    {
+      "path": "attack_phase/scripts/build_s5_server_probe.py",
+      "source_path": "attack_phase/scripts/build_s5_server_probe.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "5e9b68b00498275ad8743a4a9110a95c2ba07368",
+      "source_sha256": "98156677ebf497c29dd4d6562496976b9b25ca146f62e34c143b893de0362104",
+      "export_sha256": "98156677ebf497c29dd4d6562496976b9b25ca146f62e34c143b893de0362104",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "S5の固定KDE対象3標的とAIA multiplexを構築する。",
+      "functions": [
+        "_sha256",
+        "_require_file",
+        "_require_dir",
+        "make_mia_candidate",
+        "validate_mia_source_regression",
+        "validate_assignment_is_new",
+        "build_aia_candidate",
+        "_safe_label",
+        "run",
+        "parse_args"
+      ],
+      "local_imports": [
+        "attack_phase/scripts/build_attack_candidates.py",
+        "attack_phase/scripts/build_s4_exploratory_probe.py",
+        "attack_phase/src/aia_stage1.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "shutil",
+        "sys",
+        "tempfile"
+      ],
+      "original_docstring": "Build the predeclared S5 server probe without changing prior artifacts.\n\nS5 is a fixed information probe.  It restores the frozen MIA source on every\ntarget except the three predeclared rare-KDE columns, and evaluates exactly one\nnew AIA expert cell for each target.  The script performs all source and\ndestination checks before creating the final run directory and never submits."
+    },
+    {
+      "path": "attack_phase/scripts/build_server_probe.py",
+      "source_path": "attack_phase/scripts/build_server_probe.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "f4c169f24d0d9b59aa0a4c66ce03ee3711a449be",
+      "source_sha256": "397ce46f0cf1ac7a9bd07d4e88a7ad18f4a81ff22446d9406632a676acfb1f33",
+      "export_sha256": "397ce46f0cf1ac7a9bd07d4e88a7ad18f4a81ff22446d9406632a676acfb1f33",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "予備戦probe設定に従い標的別のMIA/AIAを選択して包装する。",
+      "functions": [
+        "sha",
+        "build_probe",
+        "main"
+      ],
+      "local_imports": [
+        "attack_phase/scripts/build_attack_candidates.py",
+        "attack_phase/src/target_router.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "pandas",
+        "pathlib",
+        "shutil",
+        "sys",
+        "tempfile"
+      ],
+      "original_docstring": "Build reproducible S0/S1 server probes from the target routing manifest."
+    },
+    {
+      "path": "attack_phase/scripts/make_s3_mia_candidate.py",
+      "source_path": "attack_phase/scripts/make_s3_mia_candidate.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "ca1cf87c2a0c7aa00f5b5c5952104b462b5de759",
+      "source_sha256": "3c04e87f769fbabc99812df92cf3fb6818949c682824c1b50bfd33447451779c",
+      "export_sha256": "3c04e87f769fbabc99812df92cf3fb6818949c682824c1b50bfd33447451779c",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "S3の希少KDE MIAと固定NNの標的別組合せを作る。",
+      "functions": [],
+      "local_imports": [],
+      "external_import_roots": [
+        "pandas",
+        "pathlib"
+      ],
+      "original_docstring": null
+    },
+    {
+      "path": "attack_phase/scripts/run_aia_stage2_experiment.py",
+      "source_path": "attack_phase/scripts/run_aia_stage2_experiment.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "6d6498a77a8cd7cf46406eb7de8d69951d28c914",
+      "source_sha256": "f9401e9dfeef174118a22a2f16189713c841792a615e8a4f8ee1c1a844edd613",
+      "export_sha256": "f9401e9dfeef174118a22a2f16189713c841792a615e8a4f8ee1c1a844edd613",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "予備戦の公式1NN回答とgate付きdonor-modal回答を生成・比較する入口。",
+      "functions": [
+        "_master_split",
+        "_one_metrics",
+        "config_name",
+        "_pseudo_runs",
+        "_select",
+        "_proxy",
+        "_public",
+        "run",
+        "parse_args"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage2.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Run AIA stage-2 abstention/donor-set experiments and public candidates."
+    },
+    {
+      "path": "attack_phase/scripts/run_mia_stage2_experiment.py",
+      "source_path": "attack_phase/scripts/run_mia_stage2_experiment.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "fd12b3e0dadc6683c17ccbe6b440146c412ba8cf",
+      "source_sha256": "1f419c9249f196b857349a6320a27e6b44c283a55d1de98c67c598eb5de6d5f2",
+      "export_sha256": "1f419c9249f196b857349a6320a27e6b44c283a55d1de98c67c598eb5de6d5f2",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "予備戦S0の固定Block NN MIAを生成・検証する入口。",
+      "functions": [
+        "_split_member_control",
+        "_gate_by_name",
+        "_split_method",
+        "_score_models",
+        "_score_selected",
+        "_pseudo_runs",
+        "_mechanism_summary",
+        "_confirm_test",
+        "_team10_scores",
+        "_split_stability",
+        "_public_outputs",
+        "run",
+        "parse_args"
+      ],
+      "local_imports": [
+        "attack_phase/src/mia_low_fpr.py",
+        "attack_phase/src/mia_stage2.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Run stage-2 cross-fit/null-calibrated MIA experiments and build a candidate.\n\nThis script never reads a token and never creates a ZIP/submission.  Public C\nfiles are used only after method selection has been completed on pseudo tune."
+    },
+    {
+      "path": "attack_phase/scripts/run_mia_stage4_experiment.py",
+      "source_path": "attack_phase/scripts/run_mia_stage4_experiment.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "90fd6f6c8e8ffd02823fda1e953f860c6823fc4c",
+      "source_sha256": "7e901c3e7d8791acda36099287c8392c3c0038fe45a46824068904ba7689faf6",
+      "export_sha256": "7e901c3e7d8791acda36099287c8392c3c0038fe45a46824068904ba7689faf6",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "entry",
+      "meaning": "S1-dualで提出した固定NN/ExtraTreesブレンドを作成する。",
+      "functions": [
+        "_split_member_control",
+        "_run_pool",
+        "_summary",
+        "run",
+        "main"
+      ],
+      "local_imports": [
+        "attack_phase/src/mia_stage2.py",
+        "attack_phase/src/mia_stage3.py",
+        "attack_phase/src/mia_stage4.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Run Stage-4 categorical-aware classifier MIA diagnostics.\n\nNo token, ZIP, or final candidate is read or written.  The runner evaluates a\nfixed classifier/gate set on disjoint pseudo tune/test cohorts and writes only\nignored diagnostics under ``attack_phase/outputs``."
+    },
+    {
+      "path": "attack_phase/src/aia_stage1.py",
+      "source_path": "attack_phase/src/aia_stage1.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "fa1a1463a84232dc9caf608bf1e74a2b956b59cc",
+      "source_sha256": "3dc383ae8871e7ca14633ee2e9295cd56d7fe727ae18b5bd66656ef260662041",
+      "export_sha256": "3dc383ae8871e7ca14633ee2e9295cd56d7fe727ae18b5bd66656ef260662041",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "公式1NN、重み付き近傍、modal-window等のAIA基礎実装。",
+      "functions": [
+        "_groups",
+        "_r_time",
+        "r_time_deadzone",
+        "evaluate_time_predictions",
+        "rare_mask",
+        "AIAEngine",
+        "make_pseudo_target",
+        "validate_f_aia_candidate"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-1 AIA attacks: block nearest-neighbour and time-window variants.\n\nThe official attack uses a sex-by-prefecture nearest neighbour over five\ncontinuous QI columns and copies one ``time`` value.  This module keeps that\nbaseline frozen and adds deterministic, metric-aware variants.  It contains\nno hidden membership labels; evaluation helpers operate only on supplied\nmember/control proxy cohorts."
+    },
+    {
+      "path": "attack_phase/src/aia_stage2.py",
+      "source_path": "attack_phase/src/aia_stage2.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "6d6498a77a8cd7cf46406eb7de8d69951d28c914",
+      "source_sha256": "9dc1c5a2880528c027e3a3a8fda44eeb580dbb4acfa88d9d96699901e314ae49",
+      "export_sha256": "9dc1c5a2880528c027e3a3a8fda44eeb580dbb4acfa88d9d96699901e314ae49",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "membership gateとdonor-modal、棄権sentinelを実装する。",
+      "functions": [
+        "Stage2Config",
+        "stage2_config_grid",
+        "risk_stratified_triplet_swap",
+        "make_stage2_pseudo_target",
+        "AIAStage2Engine"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-2 AIA: metric-aware abstention and risk-stratified donor sets.\n\nThis module deliberately does not use a population predictor on a gate miss.\nThe abstention sentinel is finite and non-negative but outside the observed\ntime range, so it cannot accidentally count as a ±0.5-year success."
+    },
+    {
+      "path": "attack_phase/src/aia_stage3.py",
+      "source_path": "attack_phase/src/aia_stage3.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "c2e2a276c24dbdf88f5f6dde4592ce12029bab55",
+      "source_sha256": "17d5756ca17825255d16e325c191ea19d48e6147e6715b6bb4f631e0cd395da9",
+      "export_sha256": "17d5756ca17825255d16e325c191ea19d48e6147e6715b6bb4f631e0cd395da9",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "L1/Huber等の距離を用いるAIA expert群。S4/S5の依存。",
+      "functions": [
+        "robust_distance",
+        "Stage3Config",
+        "stage3_config_grid",
+        "AIAStage3Engine"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage2.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-3 AIA robust-distance experiment.\n\nStage 2's abstention and donor-modal objective are frozen.  This module only\nchanges the distance geometry used for the C-vs-background membership gate\nand for the donor ranking.  The baseline geometry is the Stage 2 normalized\nL2 calculation, which is kept here as an explicit rollback configuration so\nthat every trial can be compared with the frozen candidate."
+    },
+    {
+      "path": "attack_phase/src/aia_stage4.py",
+      "source_path": "attack_phase/src/aia_stage4.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "39cbf85aee16823a7456b87845c292e54e42922d",
+      "source_sha256": "8a869b8b6236db8a4b289d0b52bd9ba2b6a42c3d249b01424d5ad4e1cc1bb51d",
+      "export_sha256": "8a869b8b6236db8a4b289d0b52bd9ba2b6a42c3d249b01424d5ad4e1cc1bb51d",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "生存時間を考慮したAIA expert群。独立実験全体の採用を意味しない。",
+      "functions": [
+        "CauseSpecificCox",
+        "Stage4Config",
+        "stage4_config_grid",
+        "AIAStage4Engine"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage3.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-4 AIA: survival-aware conditional time attacks (hypothesis H3).\n\nStage 2's ``gated_abstain_donor_modal`` stays the frozen rollback.  The\nmembership gate, the abstention sentinel, the block/donor pools, and the\nofficial +/-0.5 objective are all unchanged.  The single axis this stage varies\nis *how a time is chosen inside the gate*: an empirical donor modal window is\nreplaced by a conditional distribution from a cause-specific Cox model fit on\nthe target ``C``.\n\nThe defense calibrated ``time``/``onset``/``death`` with cause-specific Cox\ncalibration and outcome-triplet swaps, so ``C`` may reproduce the conditional\nlaw ``P(time | QI)`` of ``B`` much more faithfully than it reproduces any\nindividual record.  ``time`` is administratively censored (most rows sit on a\nsingle follow-up plateau), so the observed-time law is a continuous event part\nplus an atom at the plateau; both parts are modelled explicitly here.\n\nNo external survival package is required: the Cox fit is a small, auditable\nNewton-Raphson with Breslow tie handling and a fixed ridge penalty."
+    },
+    {
+      "path": "attack_phase/src/aia_stage5.py",
+      "source_path": "attack_phase/src/aia_stage5.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "2ca2ac6c8936d51190b469e6d94b0a4cd3b6f05e",
+      "source_sha256": "49266435e1fe6d9867193944f5c136e5aebf702689af46df458effe752dbcaab",
+      "export_sha256": "49266435e1fe6d9867193944f5c136e5aebf702689af46df458effe752dbcaab",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "集団・セル単位の時間推測を提供する依存実装。",
+      "functions": [
+        "age_cuts",
+        "cell_keys",
+        "window_success",
+        "modal_window_value",
+        "_r_time",
+        "AggregateCells",
+        "oracle_cell_ceiling",
+        "Stage5Config",
+        "stage5_config_grid",
+        "AIAStage5Engine"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage3.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-5 AIA: aggregate / reconstruction-style feasibility (hypothesis H4).\n\nThe defense matched marginals, categorical profiles, rare profiles and Cox\ncoefficients to ``B`` very closely, so ``C`` may over-describe ``B`` at the\n*aggregate* level even where no individual near-copy survives.  ``time`` is\ncontinuous, so a binary reconstruction attack cannot be ported directly.  This\nmodule therefore asks the feasibility question first, exactly as the Goal\nrequires, instead of building a large constrained optimisation.\n\nThe decisive quantity is an **oracle cell ceiling**.  Any attack whose\nprediction is constant inside an aggregation cell — every group-count,\ngroup-mean, group-quantile, histogram, constrained-least-squares or\nnonnegative-reconstruction variant of H4 — cannot beat the ceiling obtained by\nchoosing each cell's single best time with the true member labels revealed.\nIf that ceiling does not clear the frozen Stage-2 donor attack, no member of\nthat family can, and H4 is closed by construction rather than by search.\n\nTwo concrete aggregate estimators are also evaluated so the ceiling is not the\nonly evidence."
+    },
+    {
+      "path": "attack_phase/src/aia_stage6.py",
+      "source_path": "attack_phase/src/aia_stage6.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "6243cb09ab1c964e1bfaebe3819d8d0c5626597a",
+      "source_sha256": "eea96c02d6efa1032f2753167aaddc529d3304161053c19f9156ecbcbd6b39ac",
+      "export_sha256": "eea96c02d6efa1032f2753167aaddc529d3304161053c19f9156ecbcbd6b39ac",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "時間窓と転帰の意味を補正したAIA expert群。",
+      "functions": [
+        "any_event",
+        "support_centers",
+        "window_mass_from_support",
+        "AnyEventRidgeCox",
+        "Stage6Config",
+        "stage6_config_grid",
+        "AIAStage6Engine"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage3.py",
+        "attack_phase/src/aia_stage4.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Corrective H3 AIA estimator: single-event Cox and true window mass.\n\nStage 4's gate, sentinel, donor pools, and rollback path are preserved.  This\nmodule changes only the in-gate time estimate.  It fixes two semantic issues:\n``onset`` and ``death`` are collapsed to one ``any_event`` indicator, and the\nwindow center is selected from a support-complete candidate set rather than\nonly from the observed time grid."
+    },
+    {
+      "path": "attack_phase/src/aia_stage7.py",
+      "source_path": "attack_phase/src/aia_stage7.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "e1ff2115c74baac3be2a0cecea3898323546845e",
+      "source_sha256": "da0617bcd9ec097773f363c68513f549e629c1a1408e6de418d06dc33be5d219",
+      "export_sha256": "da0617bcd9ec097773f363c68513f549e629c1a1408e6de418d06dc33be5d219",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "S3で使ったcell-modal推測等を実装する。",
+      "functions": [
+        "support_centers",
+        "sliding_hits",
+        "max_sliding_hits",
+        "_resolved_labels",
+        "oracle_cell_constant",
+        "member_success_upper_bound",
+        "AIAStage7Engine"
+      ],
+      "local_imports": [
+        "attack_phase/src/aia_stage1.py",
+        "attack_phase/src/aia_stage3.py",
+        "attack_phase/src/aia_stage5.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Corrective H4 feasibility bounds for cell-constant AIA attacks.\n\nStage 5 is retained as historical evidence, but its observed-grid and\nmember-only ceiling were not a true oracle for the official time objective.\nThis module keeps the Stage-2/3 gate, sentinel, and cell fallback fixed while\nenumerating all relevant continuous sliding-window centers.  The feasible\nfamily is deliberately limited to one constant prediction per resolved cell;\nper-row constrained reconstruction is outside this bound."
+    },
+    {
+      "path": "attack_phase/src/mia_low_fpr.py",
+      "source_path": "attack_phase/src/mia_low_fpr.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "4e18259e0d7fccf9b67625c25c0f36b7f1b9656b",
+      "source_sha256": "1a348e1e35c934adfa11be5035507d6710c62757ad14756aba09bca9f2ac0fa3",
+      "export_sha256": "1a348e1e35c934adfa11be5035507d6710c62757ad14756aba09bca9f2ac0fa3",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "予備戦MIAの距離特徴と低FPR評価を定義する。",
+      "functions": [
+        "route_for_target",
+        "grouped_tpr_at_fpr",
+        "_keys",
+        "background_overlap_mask",
+        "filter_background_derived_target",
+        "mahalanobis_rarity",
+        "_fit_kde",
+        "LowFPRFeatureModel",
+        "empirical_percentile",
+        "calibrated_scores",
+        "apply_background_veto",
+        "evaluate_score_frame",
+        "bootstrap_metric",
+        "make_pseudo_target",
+        "validate_release_targets"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "math",
+        "numpy",
+        "pandas",
+        "scipy",
+        "typing"
+      ],
+      "original_docstring": "Inspectable low-FPR membership-inference experts.\n\nThis module intentionally keeps each expert observable.  It does not infer\nhidden membership labels from the public targets; calibration uses only a\nheld-out slice of ``A_bg`` and experiment evaluation uses explicit proxies or\npseudo targets with known construction."
+    },
+    {
+      "path": "attack_phase/src/mia_stage2.py",
+      "source_path": "attack_phase/src/mia_stage2.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "5df8217f640d58aef2062352f824f777f7714427",
+      "source_sha256": "f77f6250edbdff7e9b981caa563386823aeb88d3f638ed5f6e6d185bc30c53c6",
+      "export_sha256": "f77f6250edbdff7e9b981caa563386823aeb88d3f638ed5f6e6d185bc30c53c6",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "性別×県のBlock NNと参照・較正分離を実装する。",
+      "functions": [
+        "static_frame",
+        "record_id_digest",
+        "partition_background",
+        "deterministic_fold_indices",
+        "assert_evaluation_disjoint",
+        "NeedleGate",
+        "gate_mask",
+        "apply_needle_gate",
+        "_aggregate",
+        "CrossFitNNScorer",
+        "FrozenStage1NNScorer",
+        "make_block_microaggregate",
+        "make_stage2_pseudo_target",
+        "select_with_guardrails",
+        "wilson_interval",
+        "validate_f_mia_candidate",
+        "route_public_target",
+        "gate_asdict"
+      ],
+      "local_imports": [
+        "attack_phase/src/mia_low_fpr.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "hashlib",
+        "math",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-2 low-FPR MIA calibration and narrowly gated needle experts.\n\nThe stage-1 block-nearest-neighbour score remains available as a frozen\nbaseline.  Stage 2 repeats disjoint reference/calibration fits, aggregates\ntheir evidence, and calibrates the aggregate on a separate meta-null.  Public\ntargets never provide labels or tuning feedback."
+    },
+    {
+      "path": "attack_phase/src/mia_stage3.py",
+      "source_path": "attack_phase/src/mia_stage3.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "dc7f426612301879f03c94a11e4503cf00515754",
+      "source_sha256": "89e02736df4bea2f4ca5c766753c3b0d40b5ae6afc229aa5debbf8ce4c88ee8b",
+      "export_sha256": "89e02736df4bea2f4ca5c766753c3b0d40b5ae6afc229aa5debbf8ce4c88ee8b",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "難易度補正・shadow生成等を提供する依存モジュール。手法全体を採用した意味ではない。",
+      "functions": [
+        "DifficultyConfig",
+        "RecordDifficultyNormalizer",
+        "rank_bounded",
+        "_strict_tpr_at_fpr",
+        "evaluate_methods",
+        "select_with_guardrails"
+      ],
+      "local_imports": [
+        "attack_phase/src/mia_low_fpr.py",
+        "attack_phase/src/mia_stage2.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "typing"
+      ],
+      "original_docstring": "Stage-3 MIA record-difficulty normalization.\n\nStage 2's frozen Block-NN score remains the rollback baseline.  This module\nadds a deliberately small, inspectable challenger: score each candidate\nagainst target-independent shadow targets made from a disjoint A_bg pool and\nsubtract the candidate's typical shadow score (its record difficulty) from the\ntarget score.  The shadows are fixed before pseudo tune/test evaluation, so\nthe method cannot learn from membership labels."
+    },
+    {
+      "path": "attack_phase/src/mia_stage4.py",
+      "source_path": "attack_phase/src/mia_stage4.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "90fd6f6c8e8ffd02823fda1e953f860c6823fc4c",
+      "source_sha256": "f6b91f2c049145e3a295fe1018dfadda8472331f72553e37c4b930c574b8042c",
+      "export_sha256": "f6b91f2c049145e3a295fe1018dfadda8472331f72553e37c4b930c574b8042c",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "NNとExtraTreesの固定比率ブレンドを実装する。",
+      "functions": [
+        "static_frame",
+        "_safe_matrix",
+        "_logistic_pipeline",
+        "_extra_trees_pipeline",
+        "CategoricalDensityRatioClassifier",
+        "compose_methods",
+        "evaluate_stage4",
+        "mechanism_summary",
+        "select_with_guardrails",
+        "test_only_directional_confirmation"
+      ],
+      "local_imports": [
+        "attack_phase/src/mia_low_fpr.py",
+        "attack_phase/src/mia_stage3.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "sklearn",
+        "typing"
+      ],
+      "original_docstring": "Stage-4 categorical-aware classifier density-ratio MIA.\n\nThe Stage-2 single-split Block-NN score is deliberately kept as the frozen\nrollback baseline.  This module adds two small, inspectable classifiers that\nestimate the density ratio between a pseudo target ``C`` (positive class) and\nan A_bg reference (negative class).  Continuous columns are standardized and\ncategorical columns are one-hot encoded for logistic regression; ExtraTrees\nuses deterministic ordinal encoding.  Classifier outputs are calibrated only\nagainst an independent null frame and are never fit on pseudo tune/test rows."
+    },
+    {
+      "path": "attack_phase/src/mia_stage9_skip1.py",
+      "source_path": "attack_phase/src/mia_stage9_skip1.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "f4c169f24d0d9b59aa0a4c66ce03ee3711a449be",
+      "source_sha256": "f1c5bed497674b03fcef37093e2112a164b0a4202487273523d2350a4cce6cb4",
+      "export_sha256": "f1c5bed497674b03fcef37093e2112a164b0a4202487273523d2350a4cce6cb4",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "近傍decoyを想定した距離式の比較を提供するS4ビルダー依存。",
+      "functions": [
+        "_key",
+        "distinct_shell_values",
+        "DistinctShellFeatureModel",
+        "Skip1Scorer"
+      ],
+      "local_imports": [
+        "attack_phase/src/mia_low_fpr.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "numpy",
+        "pandas",
+        "scipy",
+        "typing"
+      ],
+      "original_docstring": "Distinct-distance-shell MIA experts for the S4 nearest-decoy probe.\n\nThe frozen MIA pipeline uses the same block-wise standardized geometry as\n``LowFPRFeatureModel``.  This module changes only which distinct distance\nshell is used for the relative score.  Shell membership is defined by unique\nfinite distances, never by the second row returned by an argsort, so exact\nties cannot make the result depend on CSV order."
+    },
+    {
+      "path": "attack_phase/src/target_router.py",
+      "source_path": "attack_phase/src/target_router.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "3f65ad5c1d96b589404fa3d95f0c741bdabe9d55",
+      "source_sha256": "547d4f539e01df13b88962f080d15c21d746a42943c76467112726f0d5a372d3",
+      "export_sha256": "547d4f539e01df13b88962f080d15c21d746a42943c76467112726f0d5a372d3",
+      "adaptations": [],
+      "phases": [
+        "prelim_attack"
+      ],
+      "role": "dependency",
+      "meaning": "MIAは標的列、AIAはtarget_kで回答を結合し、キー整合性を点検する。",
+      "functions": [
+        "_sources",
+        "route_mia",
+        "route_aia"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "pandas",
+        "pathlib"
+      ],
+      "original_docstring": "Target-wise composition of already validated attack candidates."
+    },
+    {
+      "path": "experiments/extend_prefecture_on_candidate.py",
+      "source_path": "experiments/extend_prefecture_on_candidate.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "c4929b67c86d4bce87d9893aac1b4fa7df840c32667c2b21506f53c5fc645d39",
+      "export_sha256": "c4929b67c86d4bce87d9893aac1b4fa7df840c32667c2b21506f53c5fc645d39",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "既存候補の県補正を追加し、静的・プライバシー制約を点検する。",
+      "functions": [
+        "_std_dist",
+        "_load_rare",
+        "_build_moves",
+        "_assert_first12",
+        "_assert_overlay_inputs",
+        "_score_one",
+        "_run_full_static",
+        "_run_local",
+        "_passes",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "subprocess",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Extend the deterministic prefecture overlay from prefix 10 to prefix 62.\n\nThis script keeps the current best candidate's non-prefecture columns and\nreplaces only its prefecture column with the deterministic prefix overlay\nderived from the original prefix-0 candidate.  It writes checkpoint files,\nruns selfscore plus the fixed full-static and local privacy audits, and picks\nthe highest-U_gen checkpoint that passes every requested gate."
+    },
+    {
+      "path": "experiments/full_static_nearest_audit.py",
+      "source_path": "experiments/full_static_nearest_audit.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "841d85dfd0128bd9a1637ca889876d13edcf6d1cf21ec442b72bbab59feb66de",
+      "export_sha256": "841d85dfd0128bd9a1637ca889876d13edcf6d1cf21ec442b72bbab59feb66de",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing",
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "静的10属性で元Bとの距離・完全一致・希少近傍リスクを点検する。",
+      "functions": [
+        "_rare_by_id",
+        "_nearest_distance",
+        "_exact_match_count",
+        "_audit_one",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Full-static nearest-record privacy audit for candidate C files.\n\nThis reproduces the disclosed fixed audit: A_bg moments for numeric z-scores,\ncategorical mismatch weight 2, B_practice as members, and 1,049 controls\nsampled from A_bg with ``default_rng(0)``.  Only aggregate diagnostics are\nwritten."
+    },
+    {
+      "path": "experiments/local_privacy_audit.py",
+      "source_path": "experiments/local_privacy_audit.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "2df0d246da9d6e241443ce81ca8fad7ac540100a2f858d39969c62e192d18e92",
+      "export_sha256": "2df0d246da9d6e241443ce81ca8fad7ac540100a2f858d39969c62e192d18e92",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing",
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "公式参照攻撃を用いる候補監査。未知の攻撃に対する安全保証ではない。",
+      "functions": [
+        "_first_existing",
+        "_load_inputs",
+        "_member_rare_mask",
+        "_rare_mask_from_reference",
+        "_sample_controls",
+        "_audit_one",
+        "_expand_candidates",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "glob",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Local privacy proxy audit for submitted C candidates.\n\nThis is deliberately a *proxy* audit.  It reuses the kit's disclosed attack\nand scoring functions, but it is not the CodaBench/final attack evaluation.\nOnly aggregate values are emitted; per-row confidence values never leave\nmemory and are not written to disk.\n\nExample::\n\n    uv run python experiments/local_privacy_audit.py         --dist ../../_private_team10         --c ../../_private_team10/C_seed4.csv            ../../_private_team10/C_perturb_fixed_k005_s1.csv"
+    },
+    {
+      "path": "experiments/minimal_prefecture_sweep.py",
+      "source_path": "experiments/minimal_prefecture_sweep.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "c5b064e7fa30556453234fb2c323a063b2daeb7a308a620bcc2f9a91d93eb423",
+      "export_sha256": "c5b064e7fa30556453234fb2c323a063b2daeb7a308a620bcc2f9a91d93eb423",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "変更県数を限定したprefix探索を行う。",
+      "functions": [
+        "_score_one",
+        "_std_dist",
+        "_exact_count",
+        "_load_rare",
+        "_local_privacy",
+        "_static_proxy",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "sklearn",
+        "subprocess",
+        "sys"
+      ],
+      "original_docstring": "Minimal one-row prefecture rebalancing sweep for the current final C.\n\nOnly ``prefecture`` is changed.  Rows are selected from prefecture-surplus\ngroups, excluding rows flagged by the disclosed rare detector and ranking by\nlarge standardized static distance from B (with an extra distance guard for\nthe true-rare B members).  Prefix candidates k=1..12 are written and scored."
+    },
+    {
+      "path": "experiments/prefecture_after_round2.py",
+      "source_path": "experiments/prefecture_after_round2.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "3b79a77121b5cb624a30fecb6a33830e8429966b656b6cc4a69f0984e1bdb6fd",
+      "export_sha256": "3b79a77121b5cb624a30fecb6a33830e8429966b656b6cc4a69f0984e1bdb6fd",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "転帰交換第2段階後に県補正を適用する。",
+      "functions": [
+        "dmin",
+        "static",
+        "ok",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/prefecture_after_swap.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "sys"
+      ],
+      "original_docstring": "Greedy privacy-aware extension after outcome-swap round 2."
+    },
+    {
+      "path": "experiments/prefecture_after_swap.py",
+      "source_path": "experiments/prefecture_after_swap.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "22365323b9643e65ecc9ea833879cc02a17539a5c78c6b8e4f2242b1323c8788",
+      "export_sha256": "22365323b9643e65ecc9ea833879cc02a17539a5c78c6b8e4f2242b1323c8788",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "転帰交換後の候補で県分布補正を再評価する。",
+      "functions": [
+        "overlay",
+        "distmat",
+        "static_one",
+        "score",
+        "audit",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "subprocess",
+        "sys"
+      ],
+      "original_docstring": "Prefecture overlay audit after outcome-swap hillclimb."
+    },
+    {
+      "path": "experiments/run_aligned_synth.py",
+      "source_path": "experiments/run_aligned_synth.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "eea8f86e1e90dd63bd1e3478df4143361a847526a5a3eaed37e0ad2f1c3279d9",
+      "export_sha256": "eea8f86e1e90dd63bd1e3478df4143361a847526a5a3eaed37e0ad2f1c3279d9",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing",
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "多数群・公開検出希少群を分け、相関を保った共変量と競合リスク転帰を合成する初期生成器。",
+      "functions": [
+        "_nearest_correlation",
+        "_pseudo_observations",
+        "_fit_correlation",
+        "_resample_continuous",
+        "_format_continuous",
+        "_load_detector",
+        "_mahalanobis",
+        "_detector_mask",
+        "_sample_rejected_group",
+        "_synthesize_continuous",
+        "_StandardizedLogit",
+        "_sample_categorical",
+        "_cox_frame",
+        "_fit_cause_cox",
+        "_sample_event_time",
+        "_sample_outcomes",
+        "synthesize",
+        "_score_one",
+        "_compact_metrics",
+        "_print_metric_header",
+        "_print_metrics",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "lifelines",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "scipy",
+        "sklearn",
+        "subprocess",
+        "sys",
+        "typing",
+        "warnings"
+      ],
+      "original_docstring": "条件付きカテゴリ＋無正則化 Cox を使う fully synthetic 防御の実験CLI。\n\n公式の防御実装は変更せず、このファイルだけで次を実行する。\n\n* ``aligned``: B 全体の連続値を Gaussian copula から再合成する。\n* ``rare_aligned``: 公開 Mahalanobis 検出器で分けた2群をそれぞれ再合成し、\n  整形後の検出件数を rejection sampling で B と一致させる。\n* sex/smoking は B で学習した標準化ロジスティック回帰から条件付きに生成する。\n* time/onset/death は採点側と同じ予測子変換を使う無正則化 cause-specific Cox\n  から条件付きに生成する。\n\n既定の ``--mode all`` は、2モード×seed 0..4 を生成し、各結果を公式 selfscore\n（``--json``）で採点する。入力 B の行や record_id は出力へコピーしない。"
+    },
+    {
+      "path": "experiments/run_calibrated_outcomes.py",
+      "source_path": "experiments/run_calibrated_outcomes.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "5bb4a553f87a4acc9b8258964cef03917e54c61fd4d602692521c73556ca79b0",
+      "export_sha256": "5bb4a553f87a4acc9b8258964cef03917e54c61fd4d602692521c73556ca79b0",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing",
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "Cox係数とハザードを較正し、合成共変量へtime/onset/deathを付与する。",
+      "functions": [
+        "Trial",
+        "_fixed_uniforms",
+        "_center_vector",
+        "_simulate_outcomes",
+        "_beta_from_detail",
+        "_trial_key",
+        "_run_path",
+        "_parse_float_list",
+        "_parse_int_list",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_outcome_sweep.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "dataclasses",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Indirectly calibrate fully synthetic outcomes to the official Cox utility.\n\nThe static synthetic covariates are built once with ``rare_aligned``.  For each\nfixed pair of onset/death uniforms, the onset generator coefficient vector is\nupdated toward the Cox coefficients fitted on B.  No B row, record_id, or\nobserved individual time is copied to an output row.\n\nThis experiment deliberately changes only ``time/onset/death``.  Therefore the\nreference continuous-covariate MIA input is invariant within a covariate seed;\nall finalists still require a separate AIA audit."
+    },
+    {
+      "path": "experiments/run_common_quantile_micro.py",
+      "source_path": "experiments/run_common_quantile_micro.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "93c3136df767feb82accc7c48f09c4e420d8e5884bf1241e46188a9e8e3a067e",
+      "export_sha256": "93c3136df767feb82accc7c48f09c4e420d8e5884bf1241e46188a9e8e3a067e",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "多数群ALT等の分位点を部分的に移動して周辺分布を改善する。",
+      "functions": [
+        "_rank_quantiles",
+        "_quantile",
+        "_parse_float_list",
+        "_parse_columns",
+        "_bitwise_same",
+        "_apply_one",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Run common-only marginal quantile micro-tilts and official selfscores.\n\nThe public Mahalanobis detector is applied to both B and the submitted base C.\nOnly C rows outside the detector region are changed.  For one selected\ncontinuous column, each common C value is blended toward the matching empirical\nquantile of the public-detected common B values.  Rare rows are checked for\nbitwise equality and the detected rare count must remain unchanged."
+    },
+    {
+      "path": "experiments/run_minimal_ks_search.py",
+      "source_path": "experiments/run_minimal_ks_search.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "b922cca1492159e13bef6d45a76572d1d6bed6b136cb314c509121eee9f01245",
+      "export_sha256": "b922cca1492159e13bef6d45a76572d1d6bed6b136cb314c509121eee9f01245",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "KSの律速列だけを少数セル変更で補正し、監査条件を確認する。",
+      "functions": [
+        "_ks",
+        "_rare_mask",
+        "_apply",
+        "_validate_subset",
+        "_official",
+        "_audit",
+        "_compact",
+        "_passes_static",
+        "_passes_privacy",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_outcome_swap_hillclimb.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "itertools",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys",
+        "time",
+        "typing"
+      ],
+      "original_docstring": "Search and validate minimal common-only KS corrections on round5 final C.\n\nThe seven corrections change one continuous value in a public-common row and\ncross every tied maximum of that column's empirical CDF discrepancy.  The\nsearch evaluates every subset of size 0..5 with the cached Cox FastSpec\n(cache cleared because these are static-column changes), then officially\nscores the top three subsets at each size and applies the privacy audits."
+    },
+    {
+      "path": "experiments/run_outcome_coordinate_search.py",
+      "source_path": "experiments/run_outcome_coordinate_search.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "b039e5b497ed74c5f1a3e55ff2730230da89c2ca65b8f1360aa82f95a67e46b9",
+      "export_sha256": "b039e5b497ed74c5f1a3e55ff2730230da89c2ca65b8f1360aa82f95a67e46b9",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "転帰モデルの係数を座標探索してU_specを較正する。",
+      "functions": [
+        "Candidate",
+        "_frame_signature",
+        "_load_static_only",
+        "_summary_paths",
+        "_load_beta_bank",
+        "_unique_bank",
+        "_clip_beta",
+        "_add_candidate",
+        "_candidate_schedule",
+        "_evaluate",
+        "_write_summary",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_calibrated_outcomes.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "dataclasses",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Derivative-free outcome calibration on a fixed fully synthetic static table.\n\nThe static columns are read from a submitted C only.  ``time``, ``onset`` and\n``death`` are deliberately excluded from the input read and are regenerated\nfrom B-fitted cause-specific Cox baselines plus fixed seed-15 uniforms.  The\nfirst stage evaluates at most 100 candidates with the official U_spec scorer;\nonly the best eight guarded candidates receive the full official selfscore."
+    },
+    {
+      "path": "experiments/run_outcome_micro_refine.py",
+      "source_path": "experiments/run_outcome_micro_refine.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "1d5a9930c0e914b7a54dc3c7712915336e111fff1fe20fd952b1515a486b7fde",
+      "export_sha256": "1d5a9930c0e914b7a54dc3c7712915336e111fff1fe20fd952b1515a486b7fde",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "転帰較正パラメータを小範囲で調整する。",
+      "functions": [
+        "_sig",
+        "_static_only",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_calibrated_outcomes.py",
+        "experiments/run_outcome_coordinate_search.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Small second-stage seed-15 outcome search around a coordinate-search winner."
+    },
+    {
+      "path": "experiments/run_outcome_swap_hillclimb.py",
+      "source_path": "experiments/run_outcome_swap_hillclimb.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "6e8f2bc1bed1bf8983c4841ef32b88bd18e8a6134449362e22e0144eb3d80d26",
+      "export_sha256": "6e8f2bc1bed1bf8983c4841ef32b88bd18e8a6134449362e22e0144eb3d80d26",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "time/onset/deathの三つ組を交換し、転帰整合性を保ちながらCox指標を改善する。",
+      "functions": [
+        "_outcome_signature",
+        "_triplet_counter",
+        "_bucket_counters",
+        "_assert_invariants",
+        "FastSpec",
+        "_swap",
+        "_pair_pool",
+        "_score_payload_ok",
+        "_run_privacy",
+        "_run_full_static",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/full_static_nearest_audit.py",
+        "experiments/local_privacy_audit.py",
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "collections",
+        "hashlib",
+        "json",
+        "lifelines",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "time",
+        "typing",
+        "warnings"
+      ],
+      "original_docstring": "Outcome-triplet swap hill climb on a fixed static candidate.\n\nThis search deliberately keeps the static columns fixed.  The first phase\nswaps complete outcome triplets only inside the public-common, onset-event\nbucket.  Such swaps preserve every public rare/common outcome marginal and\nall onset/death statuses while still changing Cox risk sets and coefficients."
+    },
+    {
+      "path": "experiments/run_outcome_sweep.py",
+      "source_path": "experiments/run_outcome_sweep.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "41b330d367d5a85f1e14cabe8d46f109644908174524638adfdd8ceaa847b0a6",
+      "export_sha256": "41b330d367d5a85f1e14cabe8d46f109644908174524638adfdd8ceaa847b0a6",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing",
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "合成静的属性を構築し、転帰生成seedを比較する。",
+      "functions": [
+        "_build_static",
+        "_print_header",
+        "_print_metrics",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "rare_aligned の静的共変量を固定した outcome-only seed sweep。\n\ncovariate seed=0 で ``rare_aligned`` の連続値・sex・smoking・prefecture を一度だけ\n完全合成し、その静的表へ outcome seed=0..9 の cause-specific Cox サンプリングだけを\n適用する。生成・整形・公式 selfscore は ``run_aligned_synth.py`` の実装を再利用する。\n\n既定では ``--dist`` の直下へ ``C_rare_cov{covariate_seed}_o{seed}.csv``、``scores/``\nへ公式 JSON を書き出す。covariate_seed=0 の既存命名はそのまま維持する。B の行・\nrecord_id・token は出力へコピーしない。"
+    },
+    {
+      "path": "experiments/run_prefecture_rebalance.py",
+      "source_path": "experiments/run_prefecture_rebalance.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "780d5c81f748e4ed3d3632e152c2532bd7f89ee101858177b117dee48017d22c",
+      "export_sha256": "780d5c81f748e4ed3d3632e152c2532bd7f89ee101858177b117dee48017d22c",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "県の周辺分布を調整し、U_genの律速を緩和する。",
+      "functions": [
+        "_parse_seeds",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Match the prefecture marginal while breaking row-level associations.\n\nThe official utility scorer uses ``prefecture`` only through its marginal TVD\nand the no-fabrication group checks.  Reference AIA, in contrast, uses it as a\nblocking key.  This experiment therefore copies only the aggregate category\ncounts from B, randomly permutes that multiset, and assigns it independently to\nan already synthetic C.  No record identifiers or row correspondence are used."
+    },
+    {
+      "path": "experiments/run_rare_ks_search.py",
+      "source_path": "experiments/run_rare_ks_search.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "f512b4e25fc40743c334eccb668e0eedcb6b918779015b27891688c02fc6ada4",
+      "export_sha256": "f512b4e25fc40743c334eccb668e0eedcb6b918779015b27891688c02fc6ada4",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "希少群SBP等の周辺分布を限定的に修正する。",
+      "functions": [
+        "_apply",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_minimal_ks_search.py",
+        "experiments/run_outcome_swap_hillclimb.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "itertools",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys",
+        "time",
+        "typing"
+      ],
+      "original_docstring": "Search tiny rare-profile corrections on the validated round6 candidate."
+    },
+    {
+      "path": "experiments/run_rare_tilt_micro_composite.py",
+      "source_path": "experiments/run_rare_tilt_micro_composite.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "b5e6dd0346e9fe0be592202828a380e8b5c78703802dae81bb9075b7ff891532",
+      "export_sha256": "b5e6dd0346e9fe0be592202828a380e8b5c78703802dae81bb9075b7ff891532",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "希少属性の複合方向の微小補正でU_rareを改善する。",
+      "functions": [
+        "_truth_rare_mask",
+        "_nearest_distance",
+        "_exact_match_count",
+        "_full_static_one",
+        "_full_static_gate",
+        "_ks_similarity",
+        "_assert_composite",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/local_privacy_audit.py",
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "scipy",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Compose rare-tilt micro-sweep candidates on a fixed safe outcome base.\n\nThe rare-tilt files are generated separately by ``run_rare_truth_tilt.py``\nfrom the original pre-tilt base.  This script overlays only the seven\ncontinuous columns on the public-detector rare rows onto the current safe\ncandidate, then selfscores and runs fixed full-static/privacy proxy gates."
+    },
+    {
+      "path": "experiments/run_rare_truth_tilt.py",
+      "source_path": "experiments/run_rare_truth_tilt.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "86ab4512c626350f8a8e31f5b2f647964c0e0b7a5f32635c643ebee79b5e0a9c",
+      "export_sha256": "86ab4512c626350f8a8e31f5b2f647964c0e0b7a5f32635c643ebee79b5e0a9c",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "加工者に配布された自Bの希少ラベルを用い、希少領域の分布を補正する。",
+      "functions": [
+        "_truth_mask_for_b",
+        "_rank_quantiles",
+        "_quantile",
+        "_tilt_target",
+        "_keep_inside_rare_region",
+        "_apply_tilt",
+        "_parse_strengths",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "sys",
+        "typing"
+      ],
+      "original_docstring": "Apply a shrinkage-only true-rare marginal tilt to synthetic rare rows.\n\nThe input is already fully synthetic.  Only rows detected as rare by the public\nMahalanobis rule are adjusted, and only through monotone marginal quantile\nshrinkage toward B_self's true-rare distribution.  Joint row combinations and\nall outcomes remain synthetic.  A vectorized line search keeps every adjusted\nrow inside the public rare region, so the detected rare mass is unchanged.\n\nThis is an experiment, not a privacy claim.  Because the transform uses a small\n24-record reference group, every selected candidate must pass membership and\nattribute-inference audits before packaging."
+    },
+    {
+      "path": "experiments/run_static_swap_probe.py",
+      "source_path": "experiments/run_static_swap_probe.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "976f9c7390a10986c5e44c07c2b82c51352af512",
+      "source_sha256": "978f7f9ed07e92a56bbc57477272c357f287669c76b238f6b0b536dcc3702c0d",
+      "export_sha256": "978f7f9ed07e92a56bbc57477272c357f287669c76b238f6b0b536dcc3702c0d",
+      "adaptations": [],
+      "phases": [
+        "prelim_processing"
+      ],
+      "role": "entry",
+      "meaning": "最終段階でsmoking交換とageの小変更を検査する。",
+      "functions": [
+        "_apply",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_minimal_ks_search.py",
+        "experiments/run_outcome_swap_hillclimb.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys",
+        "time"
+      ],
+      "original_docstring": "Probe a few privacy-screened marginal-preserving static swaps."
+    },
+    {
+      "path": "research/adaptive_privacy.py",
+      "source_path": "research/adaptive_privacy.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "37f09c3bceb2930d4317cff8c401bfede2d3b5c0",
+      "source_sha256": "423241229f8a3f625ed3087fc24cc8787bc8e6424c3aab55a0292700f6c78e19",
+      "export_sha256": "423241229f8a3f625ed3087fc24cc8787bc8e6424c3aab55a0292700f6c78e19",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "6MIA/6AIAの加工時自己攻撃と候補×攻撃行列を実装する。",
+      "functions": [
+        "dump",
+        "block_indices",
+        "static_distances",
+        "conditional_min",
+        "qi_transform",
+        "additional_aia",
+        "Fold",
+        "positive_controls",
+        "candidates",
+        "matrix",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/full_static_nearest_audit.py",
+        "experiments/local_privacy_audit.py",
+        "research/privacy_suite.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "scipy",
+        "sklearn",
+        "subprocess",
+        "sys",
+        "time"
+      ],
+      "original_docstring": "Version 2 local attack exploration: all inference queries exclude secrets."
+    },
+    {
+      "path": "research/attack_ensembles.py",
+      "source_path": "research/attack_ensembles.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "ecb3a98cdfcf065d323c87bc43eb8cb89b81d3fa",
+      "source_sha256": "997d402d080be0df93512ea09869032939acdec05776b927bfe33365eef22562",
+      "export_sha256": "997d402d080be0df93512ea09869032939acdec05776b927bfe33365eef22562",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "固定MIA/AIAアンサンブルの共通演算。依存コードとして収録。",
+      "functions": [
+        "combine"
+      ],
+      "local_imports": [
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "pandas"
+      ],
+      "original_docstring": "Fixed, truth-free FA09 prediction combinations (no fitted weights or router)."
+    },
+    {
+      "path": "research/audit_attack_fingerprints.py",
+      "source_path": "research/audit_attack_fingerprints.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "4905c2833db99dcb93961f7186361bacfbbd6655",
+      "source_sha256": "c0ee9b544cb5a4ac9a5094460ed53ba994dee8d406d61b91f8c51239f0abc8c8",
+      "export_sha256": "c0ee9b544cb5a4ac9a5094460ed53ba994dee8d406d61b91f8c51239f0abc8c8",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "公開Cの分布・重複・時刻等の観測可能な特徴を監査する。",
+      "functions": [
+        "read",
+        "keys",
+        "observable_features",
+        "digest",
+        "dump",
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ],
+      "original_docstring": "G10a: observable features are computed separately from retrospective scores."
+    },
+    {
+      "path": "research/audit_utility_slack.py",
+      "source_path": "research/audit_utility_slack.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "bd6c44b009a866eb64e517095f51392ee1513189",
+      "source_sha256": "b90caafdd8cff535fe5faa72badbd33665bf7e3631846fef183b67f53879f26d",
+      "export_sha256": "b90caafdd8cff535fe5faa72badbd33665bf7e3631846fef183b67f53879f26d",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "G22候補の決定的再生成、MIA不変性、陽性対照の検出能力を点検する。",
+      "functions": [
+        "main"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/utility_slack.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Verify G22 perturbations, exact paired MIA metrics and control sensitivity."
+    },
+    {
+      "path": "research/background_copula.py",
+      "source_path": "research/background_copula.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "cc36db147ac2f52a577af459a6435ab570dbe7de",
+      "source_sha256": "4d473dd2aea7123693b6e1eea0d9d85938e10ebff8b11c5816cc9140f753ffbc",
+      "export_sha256": "4d473dd2aea7123693b6e1eea0d9d85938e10ebff8b11c5816cc9140f753ffbc",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "背景の分布と群別copulaから新しい静的共変量を作り転帰を合成する。",
+      "functions": [
+        "fit_model",
+        "load_model",
+        "generate",
+        "save_frame",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "research/background_partition.py",
+        "research/background_transport.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "scipy",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "G17d population rank-copula synthesis from generation-only background."
+    },
+    {
+      "path": "research/background_partition.py",
+      "source_path": "research/background_partition.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "7cced6d3799f31dd24af6aabe37113970a0450b8",
+      "source_sha256": "ed202f102bda5f2e084a945cb13d65fc69a9828469c572121ea991f8e6fd5ee6",
+      "export_sha256": "ed202f102bda5f2e084a945cb13d65fc69a9828469c572121ea991f8e6fd5ee6",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "生成・攻撃参照・較正に使う背景を分割し、情報の混用を防ぐ。",
+      "functions": [
+        "partition_indices",
+        "partition_frame",
+        "SeparatedFold",
+        "main"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "G17c generation/reference/control separation for existing v2 attack algorithms."
+    },
+    {
+      "path": "research/background_transport.py",
+      "source_path": "research/background_transport.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "a702e38c833ea6fe5d09f3ed718901c12ad413ba",
+      "source_sha256": "8cd0b1a6acf766dceddb9bd45debe087b9b507ff5a90380f5b2158f3f180cd3f",
+      "export_sha256": "8cd0b1a6acf766dceddb9bd45debe087b9b507ff5a90380f5b2158f3f180cd3f",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "背景の数値属性をBの群別周辺へ順位輸送する共通生成部品。",
+      "functions": [
+        "transport",
+        "generate",
+        "numeric_distances",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "research/background_partition.py",
+        "research/residual_rare.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "scipy",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "G17c preregistered background-rank transport; utility stage only."
+    },
+    {
+      "path": "research/build_final_attack_baseline.py",
+      "source_path": "research/build_final_attack_baseline.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "c75c0b634f6b481f246db14cb494d428c64ed47f",
+      "source_sha256": "019ba525fa0afbbe9c7cca5c195ad35fa7cdf86009301b9df065f4b4e9533794",
+      "export_sha256": "019ba525fa0afbbe9c7cca5c195ad35fa7cdf86009301b9df065f4b4e9533794",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "本戦全標的の初期予測を生成し、キー・形式・包装を検証する。",
+      "functions": [
+        "sha",
+        "write_json",
+        "read",
+        "config",
+        "main"
+      ],
+      "local_imports": [
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "importlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "platform",
+        "pwscup2026",
+        "sys",
+        "yaml",
+        "zipfile"
+      ],
+      "original_docstring": "Generate and validate fixed final-round predictions; never submits them."
+    },
+    {
+      "path": "research/build_rare_fixed_main.py",
+      "source_path": "research/build_rare_fixed_main.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "478f7d442a042f783ef68293858f9b85d0ca7ad0",
+      "source_sha256": "154365e4ff5909d4ca4e83bdb6f8b246a3b9e45c9626b21ee47de864991115f5",
+      "export_sha256": "154365e4ff5909d4ca4e83bdb6f8b246a3b9e45c9626b21ee47de864991115f5",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "974967のAIAと972302の希少MIAを固定し、非希少MIAを補正して975433を包装する。",
+      "functions": [
+        "run"
+      ],
+      "local_imports": [
+        "research/package_public_attack.py",
+        "research/rare_fixed_calibration.py",
+        "research/run_rare_fixed_calibration.py",
+        "research/verify_rare_fixed_calibration.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "datetime",
+        "io",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "FA114 single unmeasured main candidate; no upload/score entry point."
+    },
+    {
+      "path": "research/calibrated_copula.py",
+      "source_path": "research/calibrated_copula.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "d4affb841531bdc631bba0903e26675fabdfc8a1",
+      "source_sha256": "2b8b817c50e8afbb940d2dd1d3e9db263614957761fe33d6205ce0d14d2fabcf",
+      "export_sha256": "2b8b817c50e8afbb940d2dd1d3e9db263614957761fe33d6205ce0d14d2fabcf",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "B集団相関とdetector群別発症率へ合成モデルを較正する。",
+      "functions": [
+        "blend_models",
+        "rates",
+        "update_gamma",
+        "simulate",
+        "run_path",
+        "setup",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_calibrated_outcomes.py",
+        "research/background_copula.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "scipy",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "G17e: aggregate correlation and detector-group hazard calibration."
+    },
+    {
+      "path": "research/claude/build_candidates.py",
+      "source_path": "research/claude/build_candidates.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "0207200456ea8d41bf4fdee022cf295e9aa0e499",
+      "source_sha256": "fbf1e25b821d032659d7a84d7e8e16a6b32926733cb0f5a35a4e8569d370c31a",
+      "export_sha256": "fbf1e25b821d032659d7a84d7e8e16a6b32926733cb0f5a35a4e8569d370c31a",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "CL01のS3/S4/S5候補を作る。実際に提出されたのはS3=972302だけ。",
+      "functions": [
+        "base_answers",
+        "mia_variant",
+        "structural_mia_softmax"
+      ],
+      "local_imports": [
+        "research/claude/structural_attack.py"
+      ],
+      "external_import_roots": [
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "scipy",
+        "shutil",
+        "sys",
+        "warnings",
+        "zipfile"
+      ],
+      "original_docstring": "Build CL01 exploratory candidates S3/S4/S5 for the main attack phase.\n\nMIA: 971407 confidences as E0, structural layer from structural_attack.py.\nAIA: per-target best of the two measured submissions (965017, 971407) as base\nanswers, then abstention (time_hat=20, a guaranteed miss) on low-evidence rows."
+    },
+    {
+      "path": "research/claude/structural_attack.py",
+      "source_path": "research/claude/structural_attack.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "0207200456ea8d41bf4fdee022cf295e9aa0e499",
+      "source_sha256": "a0dd0613a5b3c9c93d470ac5d625f24e5f5a946bb432c3b3229eb6eeb9d88de9",
+      "export_sha256": "50f4100fe0dfd27551511183671f56af81745c20935442321b2e89ddd7108c1b",
+      "adaptations": [
+        "Replace developer-specific checkout root with file-relative repository root."
+      ],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "972302の基礎となる県事前確率と希少順位の構造層。自Bのis_rareを利用する。",
+      "functions": [
+        "load_world",
+        "_num",
+        "_nnd",
+        "_bg_keys",
+        "peer_evidence",
+        "_rlogit",
+        "_zc",
+        "structural_mia",
+        "score_mia",
+        "load_fmia",
+        "write_fmia",
+        "_qnum",
+        "_sex_nnd",
+        "aia_evidence",
+        "abstain",
+        "score_aia_target"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "glob",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "re",
+        "scipy",
+        "sklearn",
+        "sys"
+      ],
+      "original_docstring": "CL01 structural attack layer (Claude, 2026-10-09).\n\nDesign facts used (rulebook §3.1 + verified on released preliminary truth):\n  * P_i (313 non-shared rows) is drawn from the team's home prefecture; every AIA\n    challenge row of a target is in that target's home prefecture.  Preliminary\n    truth: 315/319 home-prefecture rows of B10 are non-shared.  Main B14 has 343\n    Hyogo rows for 313 P rows, so P(shared | home) ~= 30/343 = 0.087.\n  * Every non-home row is shared with exactly one other cohort.\n  * MIA power per target = max(TPR@1%FPR over all candidates, same over the 24\n    rare candidates).  The rare channel is decided by the top of the 24-row\n    rare ordering, which can be set independently of the all-channel slots.\n\nMIA: keep an existing per-pair confidence matrix E0 for the all channel (with a\nhome-prefecture log prior), and reorder only the rare candidates inside their\nexisting all-channel slots by E0 + w * E1, where E1 is the record-wise\npeer-normalised log 1-NN distance on the seven continuous columns.\n\nInputs are lawful only: own B (incl. our own is_rare), A_bg, released C_k and\nchallenge QIs.  Truth files are read only by the scoring helpers for the\npreliminary world."
+    },
+    {
+      "path": "research/common_metric.py",
+      "source_path": "research/common_metric.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "47aeeb1be82fa1321525a60c13ce6abf2c2a4244",
+      "source_sha256": "53eb61a88b375c07004d4d859b5dfc0b5d5247b9434df819124e2f175961a21c",
+      "export_sha256": "53eb61a88b375c07004d4d859b5dfc0b5d5247b9434df819124e2f175961a21c",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "共通の公開属性変換・近傍距離を提供する依存部品。",
+      "functions": [
+        "check",
+        "canonical",
+        "fit",
+        "transform",
+        "nearest",
+        "aia_evidence"
+      ],
+      "local_imports": [
+        "research/marginal_alignment.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "FA42 fixed legal-input metrics shared between MIA and AIA."
+    },
+    {
+      "path": "research/compare_attack_portfolios.py",
+      "source_path": "research/compare_attack_portfolios.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "3579be31469dfe1c3c9ef7f75e692ae9a73d3eaa",
+      "source_sha256": "931d0805220c9c0cc64dd99a0f70129cd98bff0295f3bb8ea735daaaf1dbc3c8",
+      "export_sha256": "931d0805220c9c0cc64dd99a0f70129cd98bff0295f3bb8ea735daaaf1dbc3c8",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "保存攻撃の相補性・固定mix・事後上限を比較する。最終提出を自動選択しない。",
+      "functions": [
+        "join_predictions",
+        "roc_weights",
+        "score",
+        "overlap",
+        "analyze",
+        "run"
+      ],
+      "local_imports": [
+        "research/attack_ensembles.py",
+        "research/build_final_attack_baseline.py",
+        "research/compare_final_attacks.py",
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "itertools",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "research",
+        "subprocess",
+        "sys"
+      ],
+      "original_docstring": "FA09: fixed mixes, scoring-only failure overlap, retrospective portfolio bounds."
+    },
+    {
+      "path": "research/compare_final_attacks.py",
+      "source_path": "research/compare_final_attacks.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "64041b3a004143d53248353f5ce1e90f77123c44",
+      "source_sha256": "dbe9b771b70eb68b60ee52c15c4ccc8b87505a163b68b28f4c81ab77e7eeaa22",
+      "export_sha256": "dbe9b771b70eb68b60ee52c15c4ccc8b87505a163b68b28f4c81ab77e7eeaa22",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "初期攻撃を予備戦・shadowで比較する。採点専用処理を含む。",
+      "functions": [
+        "config",
+        "clean_json",
+        "dump",
+        "score_predictions",
+        "predict_save",
+        "checkpoint",
+        "load_checkpoint",
+        "prelim",
+        "shadow",
+        "paired_summary",
+        "freeze",
+        "fingerprints",
+        "summarize",
+        "replay",
+        "main"
+      ],
+      "local_imports": [
+        "research/audit_attack_fingerprints.py",
+        "research/build_final_attack_baseline.py",
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "copy",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "scipy",
+        "subprocess",
+        "sys",
+        "time",
+        "yaml"
+      ],
+      "original_docstring": "FA02: lawful predictions first, retrospective/shadow scoring second; no submission."
+    },
+    {
+      "path": "research/compose_group_outcomes.py",
+      "source_path": "research/compose_group_outcomes.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "5117d66dec5ecc3f80d2741fc6c5be2e88bf19ea",
+      "source_sha256": "f3569b57908d14ceebb4f18fb8a0373e82e571f6ff8f57961ee2cdf16992e068",
+      "export_sha256": "f3569b57908d14ceebb4f18fb8a0373e82e571f6ff8f57961ee2cdf16992e068",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "G21-002で修復後の静的列と群較正済みの合成転帰i2を組み合わせる。",
+      "functions": [
+        "main"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/repair_sex_correlation.py"
+      ],
+      "external_import_roots": [
+        "json",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "G21-002 reuse calibrated synthetic outcomes on fixed repaired static rows."
+    },
+    {
+      "path": "research/conditional_null_mia.py",
+      "source_path": "research/conditional_null_mia.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "6955e8d8cbe4bd43f150981ebbd743dd548a71ee",
+      "source_sha256": "3cec72e3283004777d396bb8f666b1b70281c7374a94b9518d519146750d2643",
+      "export_sha256": "3cec72e3283004777d396bb8f666b1b70281c7374a94b9518d519146750d2643",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "性別・県・年齢帯/近傍の背景非memberを基準にMIA信号を較正する。",
+      "functions": [
+        "raw_peer",
+        "cell_groups",
+        "knn_groups",
+        "upper_fraction",
+        "ordered",
+        "calibrated_e0"
+      ],
+      "local_imports": [
+        "research/final_attack_api.py",
+        "research/final_attack_extensions.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "CL06 pure conditional non-member calibration of the peer_bg_excluded MIA score.\n\nInputs are own static rows, public C files and background only; no truth, teacher or file IO.\nThe same raw peer score is computed for background persons, who serve as non-member references."
+    },
+    {
+      "path": "research/confirm_overnight.py",
+      "source_path": "research/confirm_overnight.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "9767a946978cb47cb5eed8b733ab75f0a56d28ce",
+      "source_sha256": "b75fab40033d5848cc6c1b3f1b1c25e2daa1132bcfb277a8a74b146a14b139e6",
+      "export_sha256": "b75fab40033d5848cc6c1b3f1b1c25e2daa1132bcfb277a8a74b146a14b139e6",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "凍結候補と基準を未使用の背景再分割で同じ攻撃版にかける。",
+      "functions": [
+        "main"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/background_partition.py",
+        "research/evaluate_background_transport.py",
+        "research/geography_free_attacks.py",
+        "research/overnight_refinement.py",
+        "research/summarize_tradeoff.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Evaluate a preregistered frozen single CSV against incumbent and controls."
+    },
+    {
+      "path": "research/direct_density_aia.py",
+      "source_path": "research/direct_density_aia.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "d290c3b452dd6afd2f59b0f52653a12c02cc2c8b",
+      "source_sha256": "6e80de5bb574897646a02a0367306777c8db5fe9db1a98b6efbad8918086273a",
+      "export_sha256": "6e80de5bb574897646a02a0367306777c8db5fe9db1a98b6efbad8918086273a",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "背景対比の選択性と性別内の回答枠割当てを提供する。",
+      "functions": [
+        "query_check",
+        "frame",
+        "prepare",
+        "fit",
+        "predict",
+        "select_half"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "numpy",
+        "pandas",
+        "sklearn"
+      ],
+      "original_docstring": "FA35 pure public C/reference classifier, query QI only."
+    },
+    {
+      "path": "research/distance_norms.py",
+      "source_path": "research/distance_norms.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "631a5e9e9de18adda3a148da65e7aa21c2f4ab2d",
+      "source_sha256": "a144496c62419d54ddc73f41596d2e7356841b6cbef3d4682907f0f1a30558da",
+      "export_sha256": "a144496c62419d54ddc73f41596d2e7356841b6cbef3d4682907f0f1a30558da",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "L1等の近傍距離・時間ドナーの演算を提供する。",
+      "functions": [
+        "split",
+        "fit",
+        "transform",
+        "nearest"
+      ],
+      "local_imports": [
+        "research/common_metric.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "FA50 lawful fixed L1/L2/Linf nearest metrics; no truth or teacher inputs."
+    },
+    {
+      "path": "research/evaluate_background_copula.py",
+      "source_path": "research/evaluate_background_copula.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "4c1e02bf0f2a208c38d95780f97ab97de021264f",
+      "source_sha256": "46b2229ab42438e5600db443ce26e26362e16b87029a2d82efcdf70d7aca4700",
+      "export_sha256": "46b2229ab42438e5600db443ce26e26362e16b87029a2d82efcdf70d7aca4700",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "背景copula候補の保存評価と比較を提供する。",
+      "functions": [
+        "historical_result",
+        "main"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/background_copula.py",
+        "research/background_partition.py",
+        "research/evaluate_background_transport.py",
+        "research/repair_sex_correlation.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Evaluate G17d on the frozen G17c separated folds and retained anchors."
+    },
+    {
+      "path": "research/evaluate_background_transport.py",
+      "source_path": "research/evaluate_background_transport.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "af0abab8c9368f328e059dd2a2eee6c119ba0955",
+      "source_sha256": "d046b96bb28a735e4e03d6ba01e44e78b8e19cddf11f4db61714e206cf0a20a9",
+      "export_sha256": "d046b96bb28a735e4e03d6ba01e44e78b8e19cddf11f4db61714e206cf0a20a9",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "背景輸送候補の基準・対照と指標最大値を集約する。",
+      "functions": [
+        "maxima",
+        "anchors",
+        "main"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/background_partition.py",
+        "research/background_transport.py",
+        "research/repair_sex_correlation.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "G17c v2 attacks with disjoint generation, reference and control rows."
+    },
+    {
+      "path": "research/fa55_public_api.py",
+      "source_path": "research/fa55_public_api.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "4e541115c78233d72042351f200607db4b57844b",
+      "source_sha256": "eb0a4e4b3352b2ebea24f87742a7579c5497fad0000a8835c1481917f10c6658",
+      "export_sha256": "eb0a4e4b3352b2ebea24f87742a7579c5497fad0000a8835c1481917f10c6658",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "974256のL1背景比/trim距離他C比を組み合わせ、選択行へ近傍時刻を返す。",
+      "functions": [
+        "keys",
+        "check",
+        "canonical",
+        "prepare",
+        "predict",
+        "fingerprint"
+      ],
+      "local_imports": [
+        "research/distance_norms.py",
+        "research/selection_ensemble.py",
+        "research/trimmed_distance.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "pandas",
+        "scipy"
+      ],
+      "original_docstring": "FA95: pure public-frame FA55 mean; no IO, truth, teacher or scoring imports."
+    },
+    {
+      "path": "research/final_attack_api.py",
+      "source_path": "research/final_attack_api.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "c75c0b634f6b481f246db14cb494d428c64ed47f",
+      "source_sha256": "1cef58c17c8bf1efde22782d8b5e5254ba2941f39640356d85107bc252d87f19",
+      "export_sha256": "1cef58c17c8bf1efde22782d8b5e5254ba2941f39640356d85107bc252d87f19",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "本戦初回965017のfull_static_nn MIA、公式1NN AIAを含む公開入力API。",
+      "functions": [
+        "frame_check",
+        "checked_keys",
+        "rank_unit",
+        "detected",
+        "block",
+        "predict_mia",
+        "modal_window",
+        "log_transform",
+        "predict_aia",
+        "keyed_values"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "__future__",
+        "numpy",
+        "pandas",
+        "pwscup2026",
+        "scipy"
+      ],
+      "original_docstring": "G15b-v1: pure lawful-input inference; no filesystem, truth, or diagnostic imports."
+    },
+    {
+      "path": "research/final_attack_extensions.py",
+      "source_path": "research/final_attack_extensions.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "6c5f7d57daa18d6469a5df697816732e86c48784",
+      "source_sha256": "4cbb2f4be82daa8a92df375273517b4383158ebcc036f1e08af8c0610468c851",
+      "export_sha256": "4cbb2f4be82daa8a92df375273517b4383158ebcc036f1e08af8c0610468c851",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "背景一致行を除去した他C対比MIAと局所時間窓AIAを実装する。",
+      "functions": [
+        "static_keys",
+        "conditional_distance",
+        "predict_peer_batch",
+        "neighbours",
+        "time_window",
+        "predict_local_aia"
+      ],
+      "local_imports": [
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "pandas",
+        "scipy"
+      ],
+      "original_docstring": "FA03 pure lawful-input algorithms: background-excluded peers and local time mass."
+    },
+    {
+      "path": "research/geographic_intervention.py",
+      "source_path": "research/geographic_intervention.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "b7f13406f422e477cf0a20a495e07ebb2808b68c",
+      "source_sha256": "d309574467147abbf6a163645113478801f4aa6da5a68db067c0c698470fe8b5",
+      "export_sha256": "d309574467147abbf6a163645113478801f4aa6da5a68db067c0c698470fe8b5",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "G17g/G20の県再割当てを生成する。最終系列はseed2/gamma0/G。",
+      "functions": [
+        "read",
+        "checked_inputs",
+        "inverse_cdf",
+        "replace_prefecture",
+        "parent_path",
+        "assignments",
+        "generate",
+        "locate_result",
+        "predictions",
+        "rescore",
+        "evaluate",
+        "summary"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/background_partition.py",
+        "research/background_transport.py",
+        "research/evaluate_background_copula.py",
+        "research/evaluate_background_transport.py",
+        "research/privacy_suite.py",
+        "research/repair_sex_correlation.py",
+        "research/replay_calibrated_privacy.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "csv",
+        "io",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "G17g: paired county-distribution intervention with frozen clinical columns."
+    },
+    {
+      "path": "research/geography_free_attacks.py",
+      "source_path": "research/geography_free_attacks.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "7ecad5b53b2337835cd0956dc740089f43c1bd42",
+      "source_sha256": "1fa33848da257133d3840f4ff5292d30ecdfec3381e2808ef9d6a9d64b118955",
+      "export_sha256": "1fa33848da257133d3840f4ff5292d30ecdfec3381e2808ef9d6a9d64b118955",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "県を使わない自己攻撃を加えて、県変更による見かけの防御を点検する。",
+      "functions": [
+        "groups",
+        "mia_predict",
+        "aia_predict",
+        "evaluate",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/local_privacy_audit.py",
+        "research/adaptive_privacy.py",
+        "research/background_partition.py",
+        "research/evaluate_background_transport.py",
+        "research/privacy_suite.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "scipy",
+        "sys"
+      ],
+      "original_docstring": "Lawful-input geography-free predictions; truth is used only by the runner."
+    },
+    {
+      "path": "research/known_private_exclusion.py",
+      "source_path": "research/known_private_exclusion.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "13cc5d01b230de98663bc397ff4bdbcf5422870d",
+      "source_sha256": "856cb0686559247c0d9361e890c51f4e840d725635e09d79a82a49d7e1217c5d",
+      "export_sha256": "856cb0686559247c0d9361e890c51f4e840d725635e09d79a82a49d7e1217c5d",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "既知の自己非共有行との照合による除外maskを作る。相手所属真値を使わない。",
+      "functions": [
+        "match",
+        "exclude",
+        "fixture"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "numpy",
+        "pandas",
+        "scipy"
+      ],
+      "original_docstring": "Match own public challenge QI to own B; no outcome/membership inputs."
+    },
+    {
+      "path": "research/main_attack_contrasts.py",
+      "source_path": "research/main_attack_contrasts.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "9aa448ad6c20c37e92f0ad1f6d382e36ea14842a",
+      "source_sha256": "cd1d86eb64a9905ade42b86855063b8ef8ffe6db0cc59be520d45cd3db57e42a",
+      "export_sha256": "cd1d86eb64a9905ade42b86855063b8ef8ffe6db0cc59be520d45cd3db57e42a",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "FA100の年齢帯選択と公開Cのpeer距離を定義する。",
+      "functions": [
+        "raw_peer",
+        "age_mask"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "numpy",
+        "sklearn"
+      ],
+      "original_docstring": "FA101 pure public distance evidence and FA100 fixed age allocation."
+    },
+    {
+      "path": "research/marginal_alignment.py",
+      "source_path": "research/marginal_alignment.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "67d19b0aa95216bf4c0c9f8b4131a416b1001ecb",
+      "source_sha256": "e86006fe8fbf6ced0c7bf6752909a4e898ba51c2a31325e71943bad75b40a00b",
+      "export_sha256": "e86006fe8fbf6ced0c7bf6752909a4e898ba51c2a31325e71943bad75b40a00b",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "公開分布の周辺順位整合を提供する依存部品。",
+      "functions": [
+        "numeric",
+        "ecdf",
+        "fit",
+        "transform",
+        "nearest",
+        "rank_excluded",
+        "fixture"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "numpy",
+        "scipy",
+        "sklearn"
+      ],
+      "original_docstring": "FA41 public-marginal normal scores; no truth or file access."
+    },
+    {
+      "path": "research/mechanism_components.py",
+      "source_path": "research/mechanism_components.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "f6f137a19fcb35910361dcc5c87369f34e9f905d",
+      "source_sha256": "11a20775e45ed1f07e0dd1a0a68a58085824211b2936ea543a56007598834006",
+      "export_sha256": "11a20775e45ed1f07e0dd1a0a68a58085824211b2936ea543a56007598834006",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "県制約等を因子分解したMIA/AIAの実装。971407のraw_soft_pref1経路を含む。",
+      "functions": [
+        "peer_factorial",
+        "nn_mia",
+        "aia_nine",
+        "features"
+      ],
+      "local_imports": [
+        "research/final_attack_api.py",
+        "research/final_attack_extensions.py",
+        "research/prefecture_weight_attacks.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "pandas",
+        "scipy"
+      ],
+      "original_docstring": "Fixed lawful FA12 algorithms and observable fingerprints; no file/truth access."
+    },
+    {
+      "path": "research/mechanism_study_io.py",
+      "source_path": "research/mechanism_study_io.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "47c4cea39d925f110848b1b227a2ee4d22ace7a7",
+      "source_sha256": "20447b5fa5a8bf8e462c567b3b388ac5873802018dff823fb029c5b80945732b",
+      "export_sha256": "20447b5fa5a8bf8e462c567b3b388ac5873802018dff823fb029c5b80945732b",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "実験計画、入力hash、コード版の読込・保存を共通化する。",
+      "functions": [
+        "plan_inputs",
+        "preliminary",
+        "save_case",
+        "commit_engine",
+        "summary_deltas"
+      ],
+      "local_imports": [
+        "research/build_final_attack_baseline.py",
+        "research/compare_attack_portfolios.py",
+        "research/compare_final_attacks.py",
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "subprocess"
+      ],
+      "original_docstring": "Shared IO for bounded diagnostic studies; inference remains in pure modules."
+    },
+    {
+      "path": "research/mia_rare_slots.py",
+      "source_path": "research/mia_rare_slots.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "cb00f50dbaf9800d1918fea9b00adf2beb76bf22",
+      "source_sha256": "162b0cccbdcfeb696e33523dda4ee840a8ba0088efbce0863b76d92f223f4f20",
+      "export_sha256": "162b0cccbdcfeb696e33523dda4ee840a8ba0088efbce0863b76d92f223f4f20",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "S3再生と、固定スコア枠の希少行内並替えを実装する。",
+      "functions": [
+        "replay_s3",
+        "reorder"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "FA98 pure fixed-slot permutation; accepts no truth/teacher inputs."
+    },
+    {
+      "path": "research/nearest_decoy.py",
+      "source_path": "research/nearest_decoy.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "507cbf50b8c70b53b329ec448385b620b3d03e03",
+      "source_sha256": "fbc68c01f5d6f748322f316d71e7b6cb9cf0e2231bb35cc0f9ae0d33b8201daf",
+      "export_sha256": "fbc68c01f5d6f748322f316d71e7b6cb9cf0e2231bb35cc0f9ae0d33b8201daf",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "第2近傍等のドナー選択を提供する。974934のungated rank2系列で使用。",
+      "functions": [
+        "window",
+        "answers",
+        "ranked",
+        "predict"
+      ],
+      "local_imports": [
+        "research/distance_norms.py",
+        "research/fa55_public_api.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "FA97 pure public-input, row-ranked (not distinct-shell) time contrasts."
+    },
+    {
+      "path": "research/overnight_refinement.py",
+      "source_path": "research/overnight_refinement.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "5117d66dec5ecc3f80d2741fc6c5be2e88bf19ea",
+      "source_sha256": "56a3d721689d5b58c6b0feaa308669b3315789296d1b49b7cf2469f2873a3f8e",
+      "export_sha256": "56a3d721689d5b58c6b0feaa308669b3315789296d1b49b7cf2469f2873a3f8e",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "G21-001のalpha=.67/seed3301の性別相関修復を生成・監査する。",
+      "functions": [
+        "versioned_matrix",
+        "verify_reuse",
+        "generate",
+        "evaluate",
+        "summarize"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/background_partition.py",
+        "research/geography_free_attacks.py",
+        "research/repair_sex_correlation.py",
+        "research/summarize_tradeoff.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "G21 bounded refinement, preserving all candidates and same-version comparisons."
+    },
+    {
+      "path": "research/package_public_attack.py",
+      "source_path": "research/package_public_attack.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "9593d39d232e8a10b7773475071fef6f73ff8e68",
+      "source_sha256": "ebe53d320a5c0c0329ce4c9c8b214ecdbc3abe023f66b9986c54bf348eda180a",
+      "export_sha256": "ebe53d320a5c0c0329ce4c9c8b214ecdbc3abe023f66b9986c54bf348eda180a",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "凍結済みCSVをそのまま包装する。予測・送信を行わない。",
+      "functions": [
+        "sha",
+        "dump",
+        "read",
+        "build",
+        "run"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "io",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "subprocess",
+        "sys",
+        "time",
+        "yaml",
+        "zipfile"
+      ],
+      "original_docstring": "FA103 frozen CSV packaging only; never predicts, scores or uploads."
+    },
+    {
+      "path": "research/package_saved_final_attack.py",
+      "source_path": "research/package_saved_final_attack.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "3b0acc76f352ffe4fa1f16447084bd8efd9a3fea",
+      "source_sha256": "7fcfa261ccba8d2ffc1e49ebeef7c14289e9d6c8b6399f5d7e6435346493e3dd",
+      "export_sha256": "7fcfa261ccba8d2ffc1e49ebeef7c14289e9d6c8b6399f5d7e6435346493e3dd",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "保存予測からMIA/AIAをキー付きで選択し、本戦ZIPを決定的に作る。",
+      "functions": [
+        "normalize_mia_overrides",
+        "package"
+      ],
+      "local_imports": [
+        "research/build_final_attack_baseline.py",
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "Build a validated final candidate from saved keyed predictions; never submit."
+    },
+    {
+      "path": "research/prefecture_weight_attacks.py",
+      "source_path": "research/prefecture_weight_attacks.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "69a9078e1317c56aaa831c25cb4ae06c929ee7a2",
+      "source_sha256": "1d23f72d64e34bee5166dd23639c956851c3c1012417515ce27e8b43b73bdf0b",
+      "export_sha256": "1d23f72d64e34bee5166dd23639c956851c3c1012417515ce27e8b43b73bdf0b",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "県の一致をhard条件からsoft距離へ変えるAIA/MIAを提供する。",
+      "functions": [
+        "mia",
+        "aia"
+      ],
+      "local_imports": [
+        "research/final_attack_api.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "pandas",
+        "pwscup2026",
+        "scipy"
+      ],
+      "original_docstring": "FA10 lawful fixed prefecture-only penalties; no truth or file access."
+    },
+    {
+      "path": "research/prepare_mechanism_comparison.py",
+      "source_path": "research/prepare_mechanism_comparison.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "6470a5d811b7796e1854902c798d3c3f2e2097c7",
+      "source_sha256": "77bcfc8d4f16f6b6aa8eed9075e6b98cd45fa53f1d1543b861d6563bc6b7fb03",
+      "export_sha256": "77bcfc8d4f16f6b6aa8eed9075e6b98cd45fa53f1d1543b861d6563bc6b7fb03",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "971407のpeer_bg_excluded/raw_soft_pref1回答を包装し、基準との差を検査する。",
+      "functions": [
+        "deltas",
+        "run"
+      ],
+      "local_imports": [
+        "research/build_final_attack_baseline.py",
+        "research/mechanism_study_io.py",
+        "research/package_saved_final_attack.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys"
+      ],
+      "original_docstring": "FA15 deterministic dual-channel comparison asset; never uploads submissions."
+    },
+    {
+      "path": "research/privacy_suite.py",
+      "source_path": "research/privacy_suite.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "d3a1ea76c260aae33a479d99c6fc1874dc1e0cfe",
+      "source_sha256": "517e49302760724c3f87a9ea8ab5e5f987a13101708889fcb933b7dbc88cd51f",
+      "export_sha256": "517e49302760724c3f87a9ea8ab5e5f987a13101708889fcb933b7dbc88cd51f",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "MIA低FPR、AIA的中率差・希少補正等の診断指標を定義する。",
+      "functions": [
+        "digest",
+        "split_background",
+        "modal_window",
+        "log_qi_predict",
+        "success_metrics",
+        "standardized_aia",
+        "mia_metrics",
+        "evaluate",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/full_static_nearest_audit.py",
+        "experiments/local_privacy_audit.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "scipy",
+        "subprocess",
+        "sys",
+        "time"
+      ],
+      "original_docstring": "Frozen, explicitly non-official B14 privacy diagnostics (G03).\n\nReference/background fitting rows and evaluated controls are disjoint.\nNo background rows may be used to train the candidate for this protocol."
+    },
+    {
+      "path": "research/probe_metric_rules.py",
+      "source_path": "research/probe_metric_rules.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "57018038f518cae671473a14d61ce0b872e51482",
+      "source_sha256": "c5e7d2fd850944b27b924d0f6edcf4ff8a673f3081dcd6d357fde2879689e424",
+      "export_sha256": "c5e7d2fd850944b27b924d0f6edcf4ff8a673f3081dcd6d357fde2879689e424",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "本戦加工G18の重複・微小差・希少質量・転帰等の採点確認候補を作る。最終採用ではない。",
+      "functions": [
+        "change_mass",
+        "diagnostic_c2st",
+        "prepare",
+        "amend",
+        "score"
+      ],
+      "local_imports": [
+        "research/residual_rare.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "sklearn",
+        "subprocess",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "G18 controlled lawful CSV edits for requested local/server metric verification."
+    },
+    {
+      "path": "research/rare_fixed_calibration.py",
+      "source_path": "research/rare_fixed_calibration.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "de3da0bf625465830926bc65dc7753c470d15e80",
+      "source_sha256": "978e34c7033e929a2fa9693b011c244954c3bec904c7a34734774e82393f4877",
+      "export_sha256": "978e34c7033e929a2fa9693b011c244954c3bec904c7a34734774e82393f4877",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "最終975433の非希少・非除外行だけを条件付き優先順位で並替える。",
+      "functions": [
+        "priority",
+        "reassign"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "FA112: public-priority nonrare slot reassignment, with no ID tie breaking."
+    },
+    {
+      "path": "research/repair_sex_correlation.py",
+      "source_path": "research/repair_sex_correlation.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "223b9377fb779157cf9311738b87d243cd5253d9",
+      "source_sha256": "d1e2443db866c366cf43b6148bcee5f646427e14caab9c74891cab0008cfe97f",
+      "export_sha256": "d1e2443db866c366cf43b6148bcee5f646427e14caab9c74891cab0008cfe97f",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "県×detector群内の性別交換で集団相関を修復し、公式形式とUを検査する。",
+      "functions": [
+        "repair",
+        "validate_score",
+        "risk_gates",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/local_privacy_audit.py",
+        "research/adaptive_privacy.py",
+        "research/privacy_suite.py",
+        "research/run_processing.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "G04 constrained aggregate-correlation repair; no attack labels in optimizer."
+    },
+    {
+      "path": "research/replay_calibrated_privacy.py",
+      "source_path": "research/replay_calibrated_privacy.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "5a9a8c1d9c42380eeb98e45dfbb20ccb24a343f2",
+      "source_sha256": "17a4093f608d7c35c7f8b53e7efa6e8a3fdd98771c55528d023287eb05163fd4",
+      "export_sha256": "17a4093f608d7c35c7f8b53e7efa6e8a3fdd98771c55528d023287eb05163fd4",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "保存した攻撃予測・設定の同一性と再採点を点検する。",
+      "functions": [
+        "same",
+        "main"
+      ],
+      "local_imports": [
+        "research/background_partition.py",
+        "research/calibrated_copula.py",
+        "research/privacy_suite.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "math",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "Rescore saved G17e predictions, without rerunning or selecting attacks."
+    },
+    {
+      "path": "research/residual_rare.py",
+      "source_path": "research/residual_rare.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "a712d747d0787b7fa91772e73474529dba9164e8",
+      "source_sha256": "0dae50142d01c9611315615d11963f7c94e2c30b04357243a9a0bdc393a4e189",
+      "export_sha256": "0dae50142d01c9611315615d11963f7c94e2c30b04357243a9a0bdc393a4e189",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "希少残差生成研究の共通生成・採点関数。最終系列ではimportされた部品のみ。",
+      "functions": [
+        "predictors",
+        "fit_residual",
+        "residual_values",
+        "generate",
+        "diagnostics",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py",
+        "experiments/run_calibrated_outcomes.py",
+        "research/adaptive_privacy.py",
+        "research/repair_sex_correlation.py",
+        "research/run_processing.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "scipy",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "G05 detected-rare residual copula synthesis with fixed Cox calibration."
+    },
+    {
+      "path": "research/run_fa55_public_api.py",
+      "source_path": "research/run_fa55_public_api.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "4e541115c78233d72042351f200607db4b57844b",
+      "source_sha256": "30480451b4e3888df2eb8cf36688a1dd98d52823117cf169eea855000ac68524",
+      "export_sha256": "30480451b4e3888df2eb8cf36688a1dd98d52823117cf169eea855000ac68524",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "FA55の予備戦再生、本戦推論、972302 MIAとの包装を行うFA95入口。",
+      "functions": [
+        "read",
+        "sha",
+        "dump",
+        "csv",
+        "bits",
+        "load_plan",
+        "budget",
+        "audit_open",
+        "generate",
+        "assemble_zip",
+        "package",
+        "validators",
+        "differences",
+        "fingerprint_comparison"
+      ],
+      "local_imports": [
+        "research/fa55_public_api.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "io",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "subprocess",
+        "sys",
+        "time",
+        "yaml",
+        "zipfile"
+      ],
+      "original_docstring": "FA95 public-only generation, exact old replay, fixed-MIA package; never submits."
+    },
+    {
+      "path": "research/run_main_public_contrasts.py",
+      "source_path": "research/run_main_public_contrasts.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "9aa448ad6c20c37e92f0ad1f6d382e36ea14842a",
+      "source_sha256": "cb0c0c3caad7547f337c6081aedd3ca893e7571676db25cbe226301fe308cee0",
+      "export_sha256": "cb0c0c3caad7547f337c6081aedd3ca893e7571676db25cbe226301fe308cee0",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "974917のage10 AIA/希少MIA並替えと974934のrank2 AIAを公開入力から作る。",
+      "functions": [
+        "read",
+        "load",
+        "sha",
+        "dump",
+        "csv",
+        "run"
+      ],
+      "local_imports": [
+        "research/known_private_exclusion.py",
+        "research/main_attack_contrasts.py",
+        "research/mia_rare_slots.py",
+        "research/nearest_decoy.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "io",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "subprocess",
+        "sys",
+        "time",
+        "yaml",
+        "zipfile"
+      ],
+      "original_docstring": "FA101 main public construction only. No scorer/teacher/truth imports."
+    },
+    {
+      "path": "research/run_processing.py",
+      "source_path": "research/run_processing.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "d9e77e74ebfb24fcf68a7b94bd89e7815a5d8de5",
+      "source_sha256": "b088c741f3b634e8bbd7cace65d30818427c793f7d46c76a0308d2c891991f53",
+      "export_sha256": "b088c741f3b634e8bbd7cace65d30818427c793f7d46c76a0308d2c891991f53",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "本戦B14に公式/独自生成器を適用する初期基準G02。",
+      "functions": [
+        "sha",
+        "main"
+      ],
+      "local_imports": [
+        "experiments/run_aligned_synth.py"
+      ],
+      "external_import_roots": [
+        "__future__",
+        "argparse",
+        "hashlib",
+        "importlib",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "reference",
+        "subprocess",
+        "sys",
+        "time",
+        "zipfile"
+      ],
+      "original_docstring": "Generate one B14 baseline; score/validate with the unmodified official kit.\n\nThe official reference CLI expects practice-only B_practice.csv and targets.\nThis adapter reads the final distribution's B.csv and calls the same generator."
+    },
+    {
+      "path": "research/run_rare_fixed_calibration.py",
+      "source_path": "research/run_rare_fixed_calibration.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "711ffc12d56a743de6f8f6d390f87ded4f9400b4",
+      "source_sha256": "675d9056ade0160533904551e42ddb53e193368142cea1f1e1dfadc1e568595c",
+      "export_sha256": "675d9056ade0160533904551e42ddb53e193368142cea1f1e1dfadc1e568595c",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "非希少校正の分離推論・凍結・検証と共通IOを提供する。",
+      "functions": [
+        "load",
+        "sha",
+        "dump",
+        "read",
+        "hashes",
+        "infer",
+        "metric",
+        "score",
+        "main"
+      ],
+      "local_imports": [
+        "research/rare_fixed_calibration.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "datetime",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "subprocess",
+        "sys",
+        "time",
+        "yaml"
+      ],
+      "original_docstring": "FA112 separate public inference/freeze, scoring, and independent verification."
+    },
+    {
+      "path": "research/runs/20261010-FA106-cl06-main-transfer-001/run_main_transfer.py",
+      "source_path": "research/runs/20261010-FA106-cl06-main-transfer-001/run_main_transfer.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "51a99be78f6b97471c5ebfc6705043d9e6af116c",
+      "source_sha256": "7b74fe71e7df852544d06c6e4bca3482bb46dab622236a10a77ecc36d55103b1",
+      "export_sha256": "7b74fe71e7df852544d06c6e4bca3482bb46dab622236a10a77ecc36d55103b1",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "FA106として条件付き校正を本戦へ移し、974934用MIAと最終補正用配列を作る。",
+      "functions": [
+        "dump",
+        "run"
+      ],
+      "local_imports": [
+        "research/conditional_null_mia.py",
+        "research/final_attack_api.py",
+        "research/mia_rare_slots.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "hashlib",
+        "io",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "pwscup2026",
+        "research",
+        "scipy",
+        "sys",
+        "time",
+        "traceback",
+        "yaml",
+        "zipfile"
+      ],
+      "original_docstring": "FA106: one faithful CL06 main transfer; inference only, no scorer or truth."
+    },
+    {
+      "path": "research/runs/20261011-FA108-measured-final-integration-001/build_final.py",
+      "source_path": "research/runs/20261011-FA108-measured-final-integration-001/build_final.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "95ba88f986c7a586b0d78f1fc7d8dba96b853006",
+      "source_sha256": "fff44bc448b96e14447341d1f0d875ca558c50935e20da3b9d1cc0e535005e8b",
+      "export_sha256": "fff44bc448b96e14447341d1f0d875ca558c50935e20da3b9d1cc0e535005e8b",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "entry",
+      "meaning": "FA108=974967で6提出から標的単位のAIA全回答を選び、972302 MIAと結合する。",
+      "functions": [
+        "sha",
+        "dump",
+        "main"
+      ],
+      "local_imports": [
+        "research/package_public_attack.py"
+      ],
+      "external_import_roots": [
+        "collections",
+        "csv",
+        "hashlib",
+        "io",
+        "json",
+        "pathlib",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "FA108: copy measured whole target vectors; never predict, score or upload."
+    },
+    {
+      "path": "research/selection_ensemble.py",
+      "source_path": "research/selection_ensemble.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "e5e5177750a504655d860c24efc34c703152c744",
+      "source_sha256": "36de7d81b13ecb80afff86383d7017e6f196809845a636e51b332de7edb05a70",
+      "export_sha256": "36de7d81b13ecb80afff86383d7017e6f196809845a636e51b332de7edb05a70",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "二つの選択性信号を順位で組み合わせ、回答/棄権を決める。",
+      "functions": [
+        "select_count",
+        "combine"
+      ],
+      "local_imports": [
+        "research/direct_density_aia.py"
+      ],
+      "external_import_roots": [
+        "numpy",
+        "scipy"
+      ],
+      "original_docstring": "FA55 fixed legal-input rank and set mask combinations."
+    },
+    {
+      "path": "research/summarize_tradeoff.py",
+      "source_path": "research/summarize_tradeoff.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "08272a0174a13a241c469f2777fbb6440d4e4117",
+      "source_sha256": "bf139c9758f78e1bb32a90c07138d4049ffe648a40d7d21c3c66a189c288ddf2",
+      "export_sha256": "bf139c9758f78e1bb32a90c07138d4049ffe648a40d7d21c3c66a189c288ddf2",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "dependency",
+      "meaning": "Uと自己攻撃の複数指標を併記し、候補間トレードオフを集計する。",
+      "functions": [
+        "main"
+      ],
+      "local_imports": [],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ],
+      "original_docstring": "Summarize frozen methods; proxy maxima are never converted to official Anon."
+    },
+    {
+      "path": "research/trimmed_distance.py",
+      "source_path": "research/trimmed_distance.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "7298acb5cbe379a1a2bf7bd74d441954f6ec58a4",
+      "source_sha256": "bb70dc4c5244cc0d823b0bb2e1cbec6be2503d1365025aec9724edd12cd31674",
+      "export_sha256": "bb70dc4c5244cc0d823b0bb2e1cbec6be2503d1365025aec9724edd12cd31674",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "外れ成分を除く距離と近傍を求める。FA55の他C対比に使用。",
+      "functions": [
+        "split",
+        "fit",
+        "transform",
+        "nearest"
+      ],
+      "local_imports": [
+        "research/distance_norms.py"
+      ],
+      "external_import_roots": [
+        "numpy"
+      ],
+      "original_docstring": "FA53 single-coordinate trimming, a dissimilarity without metric axioms."
+    },
+    {
+      "path": "research/utility_slack.py",
+      "source_path": "research/utility_slack.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "0fe300a4e1922655f8495c490d50bc7d4a92ade6",
+      "source_sha256": "1aa199f480d37713aede3a20e7688f1754c91077b666911ac2add4e12c8c787e",
+      "export_sha256": "1aa199f480d37713aede3a20e7688f1754c91077b666911ac2add4e12c8c787e",
+      "adaptations": [],
+      "phases": [
+        "final_processing"
+      ],
+      "role": "entry",
+      "meaning": "G22で合成イベント時刻だけに幅1年/seed3401の反射付き摂動を加える。",
+      "functions": [
+        "transform",
+        "generate",
+        "evaluate",
+        "summarize"
+      ],
+      "local_imports": [
+        "research/adaptive_privacy.py",
+        "research/background_partition.py",
+        "research/geography_free_attacks.py",
+        "research/overnight_refinement.py",
+        "research/repair_sex_correlation.py",
+        "research/summarize_tradeoff.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "subprocess",
+        "sys",
+        "zipfile"
+      ],
+      "original_docstring": "G22 bounded event-time jitter; inference/truth never enters generation."
+    },
+    {
+      "path": "research/verify_rare_fixed_calibration.py",
+      "source_path": "research/verify_rare_fixed_calibration.py",
+      "source_commit": "a0e2746fcc1ec02d9b90fe36029d1ab0dc974f1f",
+      "last_change_commit": "711ffc12d56a743de6f8f6d390f87ded4f9400b4",
+      "source_sha256": "0402ec36cb60c6da60774dbc768ad7396d77dbf5d147744b0c237007d49514a2",
+      "export_sha256": "0402ec36cb60c6da60774dbc768ad7396d77dbf5d147744b0c237007d49514a2",
+      "adaptations": [],
+      "phases": [
+        "final_attack"
+      ],
+      "role": "dependency",
+      "meaning": "最終校正の順位計算を独立実装し、保護行・tie・多重集合を検算する。",
+      "functions": [
+        "tpr",
+        "measure",
+        "independent_order",
+        "verify"
+      ],
+      "local_imports": [
+        "research/rare_fixed_calibration.py",
+        "research/run_rare_fixed_calibration.py"
+      ],
+      "external_import_roots": [
+        "argparse",
+        "json",
+        "math",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sys"
+      ],
+      "original_docstring": "FA112 independent Python ordering/ROC audit of frozen CSV predictions."
+    }
+  ]
+}
